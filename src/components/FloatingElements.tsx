@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { Code, Database, Server, Zap } from 'lucide-react';
 
@@ -21,11 +23,11 @@ const FloatingElements = () => {
           transition={{ duration: 1, delay }}
         >
           <motion.div
-            animate={{ 
+            animate={{
               y: [0, -20, 0],
               rotate: [0, 5, -5, 0]
             }}
-            transition={{ 
+            transition={{
               duration: 4 + index,
               repeat: Infinity,
               ease: "easeInOut"

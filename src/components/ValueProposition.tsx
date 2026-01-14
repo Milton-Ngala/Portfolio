@@ -43,19 +43,19 @@ const ValueProposition = () => {
   ];
 
   return (
-    <section id="value-proposition" className="py-20 bg-white">
+    <section id="value-proposition" className="prose prose-lg max-w-none rounded-2xl p-8 mb-12 mt-14">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
-          className="text-center mb-16"
+          className="text-center mb-16 prose prose-lg max-w-none"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-primary-900 mb-4">
+          <h2 className="text-4xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-heading font-bold">
             Proven Results That Matter
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-4">
             Delivering enterprise-grade solutions with measurable impact for businesses of all sizes
           </p>
         </motion.div>
@@ -74,7 +74,7 @@ const ValueProposition = () => {
                 <stat.icon className="w-10 h-10 text-primary-500" />
               </div>
               <motion.div
-                className="text-4xl font-heading font-bold text-primary-900 mb-2"
+                className="text-4xl font-heading font-bold text-gray-600 dark:text-gray-400 mb-2"
                 initial={{ scale: 0 }}
                 animate={inView ? { scale: 1 } : {}}
                 transition={{ 
@@ -86,10 +86,10 @@ const ValueProposition = () => {
               >
                 {stat.number}
               </motion.div>
-              <h3 className="text-lg font-heading font-semibold text-gray-900 mb-1">
+              <h3 className="text-lg font-heading font-semibold text-gray-600 dark:text-gray-400 mb-1">
                 {stat.label}
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600 dark:text-gray-500 text-sm">
                 {stat.description}
               </p>
             </motion.div>
@@ -106,13 +106,13 @@ const ValueProposition = () => {
           {trustBadges.map((badge, index) => (
             <motion.div
               key={badge}
-              className="bg-gray-50 px-6 py-3 rounded-full border border-gray-200 hover:border-primary-200 hover:bg-primary-50 transition-all duration-300"
+              className="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-full border border-gray-200 dark:border-gray-700 hover:border-primary-200 hover:bg-primary-50 transition-all duration-300"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
               whileHover={{ scale: 1.05 }}
             >
-              <span className="text-gray-700 font-medium text-sm">
+              <span className="text-gray-700 dark:text-gray-500 font-medium text-sm">
                 {badge}
               </span>
             </motion.div>

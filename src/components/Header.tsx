@@ -1,5 +1,8 @@
+'use client';
+
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
@@ -8,7 +11,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,15 +30,14 @@ const Header = () => {
     { href: '/contact', label: 'Contact' },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => pathname === path;
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-sm border-b border-gray-200 dark:border-gray-700' 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-sm border-b border-gray-200 dark:border-gray-700'
           : 'bg-transparent'
-      }`}
+        }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
@@ -43,12 +45,12 @@ const Header = () => {
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/">
+          <Link href="/">
             <motion.div
               className="flex items-center space-x-2 text-primary-900 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
               whileHover={{ scale: 1.05 }}
             >
-              <span className="font-mono font-semibold text-lg">Milton</span>
+              <span className="font-mono font-semibold text-lg">Milton Ngala</span>
             </motion.div>
           </Link>
 
@@ -62,21 +64,19 @@ const Header = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <Link
-                  to={item.href}
-                  className={`font-medium transition-colors duration-200 relative group ${
-                    isActive(item.href)
+                  href={item.href}
+                  className={`font-medium transition-colors duration-200 relative group ${isActive(item.href)
                       ? 'text-primary-600 dark:text-primary-400'
                       : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'
-                  }`}
+                    }`}
                 >
                   {item.label}
-                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary-500 transition-all duration-300 ${
-                    isActive(item.href) ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}></span>
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary-500 transition-all duration-300 ${isActive(item.href) ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}></span>
                 </Link>
               </motion.div>
             ))}
-            
+
             {/* Theme Toggle */}
             <motion.button
               onClick={toggleTheme}
@@ -101,7 +101,7 @@ const Header = () => {
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </motion.button>
-            
+
             <button
               className="text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -122,13 +122,12 @@ const Header = () => {
             {navItems.map((item) => (
               <Link
                 key={item.href}
-                to={item.href}
+                href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className={`block px-4 py-2 transition-colors duration-200 ${
-                  isActive(item.href)
+                className={`block px-4 py-2 transition-colors duration-200 ${isActive(item.href)
                     ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20'
                     : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700'
-                }`}
+                  }`}
               >
                 {item.label}
               </Link>
