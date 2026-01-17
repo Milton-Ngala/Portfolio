@@ -29,9 +29,9 @@ const About = () => {
                             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                                 Building digital solutions that make a real difference
                             </p>
-                            <div className="w-16 h-1 bg-primary-500 mx-auto mt-6 rounded-full"></div>
+                            {/* <div className="w-16 h-1 bg-primary-500 mx-auto mt-6 rounded-full"></div> */}
                         </div>
-                            
+
                         {/* Main Content */}
                         <div className="prose prose-lg max-w-none bg-primary-50 dark:bg-gray-800 rounded-2xl p-8 mb-12">
                             <motion.p

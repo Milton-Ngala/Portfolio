@@ -3,6 +3,7 @@
  */
 import { POST } from '../../app/api/contact/route';
 import { NextResponse } from 'next/server';
+import { HTTP_STATUS } from '../../constants/httpStatus';
 
 // Mock Resend
 jest.mock('resend', () => {
@@ -45,7 +46,7 @@ describe('Contact API', () => {
         });
 
         const res = await POST(req);
-        expect(res.status).toBe(403);
+        expect(res.status).toBe(HTTP_STATUS.FORBIDDEN);
         const data = await res.json();
         expect(data.error).toBe('Forbidden');
     });
@@ -61,7 +62,7 @@ describe('Contact API', () => {
         });
 
         const res = await POST(req);
-        expect(res.status).toBe(200);
+        expect(res.status).toBe(HTTP_STATUS.OK);
         const data = await res.json();
         expect(data.success).toBe(true);
     });

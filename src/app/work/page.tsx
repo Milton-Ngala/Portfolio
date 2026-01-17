@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, TrendingUp, Users, Calendar } from 'lucide-react';
 import Link from 'next/link';
+import { useInView } from 'react-intersection-observer';
+
 
 type Metric = {
     icon: any;
@@ -128,18 +130,29 @@ const LivePreview = ({ url }: { url: string }) => (
 
 export default function Work() {
     const [expandedId, setExpandedId] = useState<number | null>(null);
+      const [ref, inView] = useInView({
+        triggerOnce: true,
+        threshold: 0.3,
+      });
 
     return (
         <section className="py-20 bg-gray-50 dark:bg-gray-900">
             <div className="max-w-6xl mx-auto px-6">
                 {/* Header */}
-                <header className="text-center mb-16">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">Selected Case Studies</h1>
-                    <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                        Production systems built to solve real business problems and deliver measurable results.
-                    </p>
-                </header>
-
+                <motion.div
+                    ref={ref}
+                    className="text-center mb-16"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.8 }}
+                >
+                    <header className="text-center mb-16">
+                        <h1 className="text-4xl md:text-5xl font-bold mb-4">Selected Case Studies</h1>
+                        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                            Production systems built to solve real business problems and deliver measurable results.
+                        </p>
+                    </header>
+                </motion.div>
                 {/* Projects */}
                 <div className="space-y-12">
                     {projects.map((project) => (

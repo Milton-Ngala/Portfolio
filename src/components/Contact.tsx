@@ -204,16 +204,6 @@ export default function Contact() {
             className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 shadow-sm"
           >
             <h2 className="text-2xl font-semibold mb-6">Start a Project</h2>
-
-            {submitStatus === 'success' && (
-              <div className="mb-6 flex items-center gap-3 rounded-lg border border-green-200 bg-green-50 dark:bg-green-900/20 p-4">
-                <CheckCircle className="text-green-500" />
-                <p className="text-green-700 dark:text-green-400 text-sm">
-                  Message received. I’ll get back to you shortly.
-                </p>
-              </div>
-            )}
-
             <form onSubmit={handleSubmit} className="space-y-5">
               <input
                 name="name"
@@ -262,6 +252,15 @@ export default function Contact() {
               >
                 {isSubmitting ? 'Sending…' : <>Send Message <Send size={18} /></>}
               </button>
+                          {submitStatus === 'success' && (
+              <div className="mb-6 flex items-center gap-3 rounded-lg border border-green-200 bg-green-50 dark:bg-green-900/20 p-4">
+                <CheckCircle className="text-green-500" />
+                <p className="text-green-700 dark:text-green-400 text-sm">
+                  Message received. I’ll get back to you shortly.
+                </p>
+              </div>
+            )}
+
             </form>
           </motion.div>
         </div>
