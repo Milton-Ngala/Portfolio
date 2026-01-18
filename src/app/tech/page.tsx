@@ -201,11 +201,55 @@ const Tech = () => {
             <p className="text-gray-600 dark:text-gray-400 mb-4">
               I focus on building systems that are reliable, maintainable, and aligned with real business needs.
             </p>
-            <div className="flex justify-center space-x-4 text-sm text-gray-500">
-              <span>• Technical Leadership</span>
-              <span>• System Architecture</span>
-              <span>• Mentorship & Code Quality</span>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <motion.div
+              className="text-center p-6 rounded-2xl shadow-lg"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <Award className="w-8 h-8 text-primary-600 mx-auto mb-3" />
+              <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                Technical Leadership
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                System Architecture
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="text-center p-6 rounded-2xl shadow-lg"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: 1.0 }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <MapPin className="w-8 h-8 text-primary-600 mx-auto mb-3" />
+              <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                System Architecture
+              </h3>
+              <p className="text-sm text-gray-600">
+                Working with global clients
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="text-center p-6 rounded-2xl shadow-lg"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: 1.2 }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <Mail className="w-8 h-8 text-primary-600 mx-auto mb-3" />
+              <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                Mentorship & Code Quality
+              </h3>
+              <p className="text-sm text-gray-600">
+                Staying current with tech trends
+              </p>
+            </motion.div>
+          </div>
           </motion.div>
         </div>
       </section>

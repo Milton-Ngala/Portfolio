@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronUp } from 'lucide-react';          // scroll‑to‑top icon
@@ -7,7 +9,7 @@ const SCROLL_THRESHOLD = 300;                      // px
 
 const FloatingActionButton = () => {
   const [scrolled, setScrolled] = useState(false); // true  -> show ScrollTop
-                                                  // false -> show WhatsApp
+  // false -> show WhatsApp
 
   /* Track scroll position ---------------------------------------------------*/
   useEffect(() => {
@@ -35,9 +37,9 @@ const FloatingActionButton = () => {
         className={`fixed bottom-8 right-8 p-4 rounded-full shadow-lg z-40
                     transition-colors duration-300
                     ${scrolled
-                      ? 'bg-primary-600 hover:bg-primary-700 text-white'
-                      : 'bg-green-500 hover:bg-green-600 text-white'
-                    }`}
+            ? 'bg-gray-600 hover:bg-gray-700 text-white'
+            : 'bg-green-500 hover:bg-green-600 text-white'
+          }`}
         /* Animation props ----------------------------------------------------*/
         initial={{ opacity: 0, scale: 0, rotate: -180 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -48,7 +50,7 @@ const FloatingActionButton = () => {
       >
         {scrolled
           ? <ChevronUp size={24} />                     // scroll‑to‑top icon
-          : <WhatsAppOutlined style={{ fontSize: 24 }} />}  
+          : <WhatsAppOutlined style={{ fontSize: 24 }} />}
       </motion.button>
     </AnimatePresence>
   );

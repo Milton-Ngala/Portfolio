@@ -50,7 +50,7 @@ const ProjectShowcase = () => {
       year: '2023',
       role: 'Full-Stack Developer',
       tech: ['React', 'D3.js', 'Python', 'PostGIS', 'Docker'],
-      image: 'https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=800',
       challenge: 'Visualize complex geospatial data with interactive mapping and real-time data processing.',
       solution: 'Created custom visualization components with optimized rendering for large datasets.',
       result: '90% faster data visualization, support for 1M+ data points, improved decision-making speed.',
@@ -77,8 +77,8 @@ const ProjectShowcase = () => {
 
   const categories = ['All', 'HealthTech', 'TravelTech', 'GIS', 'FinTech'];
 
-  const filteredProjects = filter === 'All' 
-    ? projects 
+  const filteredProjects = filter === 'All'
+    ? projects
     : projects.filter(project => project.category === filter);
 
   return (
@@ -104,11 +104,10 @@ const ProjectShowcase = () => {
               <motion.button
                 key={category}
                 onClick={() => setFilter(category)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-                  filter === category
+                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${filter === category
                     ? 'bg-primary-500 text-white shadow-lg'
                     : 'bg-white text-gray-700 hover:bg-primary-50 hover:text-primary-700'
-                }`}
+                  }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -119,7 +118,7 @@ const ProjectShowcase = () => {
         </motion.div>
 
         {/* Projects Grid */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
           layout
         >
@@ -169,7 +168,7 @@ const ProjectShowcase = () => {
                   <h3 className="text-xl font-heading font-bold text-gray-900 mb-2">
                     {project.title}
                   </h3>
-                  
+
                   <p className="text-gray-600 text-sm mb-4">
                     {project.role}
                   </p>
