@@ -1,8 +1,8 @@
 'use client';
 
-export default function CookiePolicyPage() {
+const CookiePolicyPage = () => {
     return (
-        <main className="max-w-4xl mx-auto px-6 py-20">
+        <main className="max-w-4xl mx-auto py-20 mt-15">
             <h1 className="text-3xl font-bold mb-6">Cookie Policy</h1>
 
             <p className="text-gray-600 dark:text-gray-400 mb-8">
@@ -12,7 +12,7 @@ export default function CookiePolicyPage() {
             <section className="space-y-6 text-gray-700 dark:text-gray-300">
                 <p>
                     This Cookie Policy explains what cookies are, how we use them, and your
-                    choices regarding their use.
+                    choices regarding their use
                 </p>
 
                 <h2 className="text-xl font-semibold">1. What Are Cookies?</h2>
@@ -67,4 +67,7 @@ export default function CookiePolicyPage() {
             </section>
         </main>
     );
-}
+};
+
+export default CookiePolicyPage;
+

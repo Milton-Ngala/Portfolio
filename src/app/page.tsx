@@ -10,7 +10,7 @@ import Work from "@/components/Work";
 import ValueProposition from "@/components/ValueProposition";
 import Image from "next/image";
 import ngala from "../assets/ngala.png";
-import { useTheme } from "@/contexts/ThemeContext";
+import useTheme from "@/contexts/ThemeContext";
 
 
 const Home = () => {

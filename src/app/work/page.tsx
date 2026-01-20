@@ -128,7 +128,7 @@ const LivePreview = ({ url }: { url: string }) => (
     </div>
 );
 
-export default function Work() {
+const Work = () => {
     const [expandedId, setExpandedId] = useState<number | null>(null);
       const [ref, inView] = useInView({
         triggerOnce: true,
@@ -253,4 +253,6 @@ export default function Work() {
             </div>
         </section>
     );
-}
+};
+
+export default Work;

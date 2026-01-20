@@ -13,11 +13,11 @@ export const metadata: Metadata = {
     description: 'Software Engineer'
 };
 
-export default function RootLayout({
+const RootLayout = ({
     children,
 }: {
     children: React.ReactNode;
-}) {
+}) => {
     return (
         <html lang="en">
             <body suppressHydrationWarning className={`${inter.className} min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300`}>
@@ -30,4 +30,6 @@ export default function RootLayout({
             </body>
         </html>
     );
-}
+};
+
+export default RootLayout;

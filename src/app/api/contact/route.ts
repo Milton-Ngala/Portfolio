@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { HTTP_STATUS } from '@/constants/httpStatus';
+import HTTP_STATUS from '@/constants/httpStatus';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(req: Request) {
+const POST = async (req: Request) => {
   const { name, email, message, projectType } = await req.json();
 
   const origin = req.headers.get('origin');
@@ -68,4 +68,6 @@ export async function POST(req: Request) {
       }
     );
   }
-}
+};
+
+export { POST };
