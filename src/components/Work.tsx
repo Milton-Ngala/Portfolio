@@ -126,7 +126,7 @@ const LivePreview = ({ url }: { url: string }) => (
   </div>
 );
 
-export default function Work() {
+const Work = () => {
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   return (
@@ -240,4 +240,6 @@ export default function Work() {
       </div>
     </section>
   );
-}
+};
+
+export default Work;

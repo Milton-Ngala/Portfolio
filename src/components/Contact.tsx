@@ -13,9 +13,9 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import { WhatsAppOutlined, CoffeeOutlined } from '@ant-design/icons';
-import { services } from '../components/common/services';
+import services from '../components/common/services';
 
-export default function Contact() {
+const Contact = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 });
 
   const [formData, setFormData] = useState({
@@ -267,4 +267,7 @@ export default function Contact() {
       </div>
     </section>
   );
-}
+};
+
+export default Contact;
+

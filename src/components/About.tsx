@@ -60,7 +60,7 @@ const About = () => {
               contributing to open source projects, or mentoring junior developers.
             </motion.p>
           </div>
-
+        </motion.div>
           {/* Highlights */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                             <motion.div
@@ -129,7 +129,6 @@ const About = () => {
               </motion.button>
             </Link>
           </motion.div>
-        </motion.div>
       </div>
     </section>
   );

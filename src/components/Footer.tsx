@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { motion, MotionValue } from 'framer-motion';
 import { Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import { WhatsAppOutlined, GithubOutlined } from '@ant-design/icons';
-import { services } from '../components/common/services';
+import services from '../components/common/services';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

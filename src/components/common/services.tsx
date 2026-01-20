@@ -3,7 +3,7 @@ interface Service {
     href: string;
 }
 
-export const services: Service[] = [
+const services: Service[] = [
     { name: 'Web and software Development', href: '/contact' },
     { name: 'E-commerce Solutions', href: '/contact' },
     { name: 'API and Backend Development', href: '/contact' },
@@ -13,3 +13,5 @@ export const services: Service[] = [
     { name: 'Technical Consultation', href: '/contact' },
     { name: 'Other', href: '/contact' },
 ];
+
+export default services;
