@@ -5,7 +5,7 @@ import HTTP_STATUS from '@/constants/httpStatus';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const POST = async (req: Request) => {
-  const { name, email, message, projectType } = await req.json();
+  const { name, email, phone, message, projectType } = await req.json();
 
   const origin = req.headers.get('origin');
   const allowedOrigin = process.env.NEXT_PUBLIC_APP_URL;
@@ -28,6 +28,7 @@ const POST = async (req: Request) => {
         <h2>${projectType} Project Inquiry</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
         <p><strong>Project Type:</strong> ${projectType}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
