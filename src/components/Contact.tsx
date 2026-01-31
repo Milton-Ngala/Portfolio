@@ -21,6 +21,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     message: '',
     projectType: services[0].name,
   });
@@ -55,6 +56,7 @@ const Contact = () => {
       setFormData({
         name: '',
         email: '',
+        phone: '',
         message: '',
         projectType: services[0].name,
       });
@@ -213,7 +215,6 @@ const Contact = () => {
                 required
                 className="w-full rounded-lg border px-4 py-3 bg-transparent dark:bg-gray-800 dark:border-gray-700"
               />
-
               <input
                 name="email"
                 type="email"
@@ -223,7 +224,15 @@ const Contact = () => {
                 required
                 className="w-full rounded-lg border px-4 py-3 bg-transparent dark:bg-gray-800 dark:border-gray-700"
               />
-
+              <input
+                name="phone"
+                type="tel"
+                placeholder="Phone number"
+                value={formData.phone}
+                onChange={handleInputChange}
+                required
+                className="w-full rounded-lg border px-4 py-3 bg-transparent dark:bg-gray-800 dark:border-gray-700"
+              />
               <select
                 name="projectType"
                 value={formData.projectType}
