@@ -55,7 +55,7 @@ const Home = () => {
           >
             Milton Ngala
             <br />
-            <span className="text-gradient">Senior Software Engineer</span>
+            <span className="text-gradient">Software Engineer</span>
           </motion.h1>
 
           {/* Sub-headline */}
