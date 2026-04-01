@@ -1,3 +1,185 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ── Design tokens ──────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    /* Backgrounds */
+    --bg-base:      theme('colors.gray.50');
+    --bg-surface:   theme('colors.white');
+    --bg-elevated:  theme('colors.white');
+    --bg-subtle:    theme('colors.gray.100');
+
+    /* Borders */
+    --border:       theme('colors.gray.200');
+    --border-muted: theme('colors.gray.100');
+
+    /* Text */
+    --text-primary:   theme('colors.gray.900');
+    --text-secondary: theme('colors.gray.600');
+    --text-muted:     theme('colors.gray.400');
+
+    /* Brand */
+    --brand:          theme('colors.primary.600');
+    --brand-hover:    theme('colors.primary.700');
+    --brand-subtle:   theme('colors.primary.50');
+    --brand-text:     theme('colors.primary.700');
+  }
+
+  .dark {
+    --bg-base:      theme('colors.gray.950');
+    --bg-surface:   theme('colors.gray.900');
+    --bg-elevated:  theme('colors.gray.800');
+    --bg-subtle:    theme('colors.gray.800');
+
+    --border:       theme('colors.gray.700');
+    --border-muted: theme('colors.gray.800');
+
+    --text-primary:   theme('colors.gray.50');
+    --text-secondary: theme('colors.gray.400');
+    --text-muted:     theme('colors.gray.500');
+
+    --brand:          theme('colors.primary.400');
+    --brand-hover:    theme('colors.primary.300');
+    --brand-subtle:   rgb(13 148 136 / 0.15);
+    --brand-text:     theme('colors.primary.400');
+  }
+}
+
+/* ── Base styles ────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    @apply font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold tracking-tight;
+    color: var(--text-primary);
+  }
+
+  p {
+    color: var(--text-secondary);
+    @apply leading-relaxed;
+  }
+
+  ::selection {
+    background-color: theme('colors.primary.500' / 25%);
+    color: var(--text-primary);
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+    ring-offset-color: var(--bg-base);
+  }
+}
+
+/* ── Reusable component classes ─────────────────────────────────────────── */
+@layer components {
+  /* Section wrapper — consistent vertical rhythm */
+  .section {
+    @apply py-24 px-6;
+  }
+  .section-sm {
+    @apply py-16 px-6;
+  }
+
+  /* Max-width containers */
+  .container-prose {
+    @apply max-w-3xl mx-auto;
+  }
+  .container-content {
+    @apply max-w-5xl mx-auto;
+  }
+  .container-wide {
+    @apply max-w-7xl mx-auto;
+  }
+
+  /* Card */
+  .card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+    @apply rounded-card shadow-card;
+  }
+  .card-elevated {
+    background-color: var(--bg-elevated);
+    border: 1px solid var(--border);
+    @apply rounded-card shadow-card-md;
+  }
+
+  /* Section heading block */
+  .section-heading {
+    @apply text-center mb-16;
+  }
+  .section-heading h2 {
+    @apply text-h2 font-heading font-bold mb-4;
+    color: var(--text-primary);
+  }
+  .section-heading p {
+    @apply text-lg max-w-2xl mx-auto;
+    color: var(--text-secondary);
+  }
+
+  /* Tag / badge pill */
+  .tag {
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    @apply px-3 py-1 rounded-full text-xs font-mono font-medium;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg
+           bg-primary-600 text-white font-heading font-semibold text-sm
+           hover:bg-primary-700 active:scale-95
+           transition-all duration-200 shadow-card;
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg
+           border border-primary-600 text-primary-600
+           font-heading font-semibold text-sm
+           hover:bg-primary-600 hover:text-white active:scale-95
+           transition-all duration-200;
+  }
+
+  /* Input field */
+  .input {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    @apply w-full rounded-lg px-4 py-3 text-sm
+           placeholder:text-gray-400 dark:placeholder:text-gray-500
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+           transition-shadow duration-200;
+  }
+}
+
+/* ── Utilities ──────────────────────────────────────────────────────────── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-500 to-primary-400 bg-clip-text text-transparent;
+  }
+
+  /* Subtle divider */
+  .divider {
+    border-color: var(--border);
+    @apply border-t;
+  }
+}

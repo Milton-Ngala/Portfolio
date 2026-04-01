@@ -33,7 +33,7 @@ const FloatingElements = () => {
               ease: "easeInOut"
             }}
           >
-            <Icon size={40} className="text-primary-400 dark:text-primary-500" />
+          <Icon size={36} className="text-primary-400 dark:text-primary-600" />
           </motion.div>
         </motion.div>
       ))}

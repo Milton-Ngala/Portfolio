@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,7 +8,7 @@ import { useInView } from 'react-intersection-observer';
 import projects from '@/data/projects';
 import LivePreview from '@/components/common/LivePreview';
 
-const Work = () => {
+const WorkSection = () => {
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
 
@@ -152,7 +152,7 @@ const Work = () => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
-              Let us talk about your project
+              Let's talk about your project
               <ArrowRight size={16} />
             </motion.button>
           </Link>
@@ -162,4 +162,4 @@ const Work = () => {
   );
 };
 
-export default Work;
+export default WorkSection;

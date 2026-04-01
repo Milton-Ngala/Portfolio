@@ -1,96 +1,67 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description: 'Privacy Policy for miltonngala.com',
+};
+
 const PrivacyPolicyPage = () => {
-    return (
-        <main className="max-w-4xl mx-auto px-6 py-20">
-            <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
+  return (
+    <main className="pt-20 max-w-3xl mx-auto px-6 py-16">
+      <h1 className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">
+        Privacy Policy
+      </h1>
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-10">Last updated: January 2026</p>
 
-            <p className="text-gray-600 dark:text-gray-400 mb-8">
-                Last updated: January 2026
-            </p>
+      <div className="space-y-8 text-gray-700 dark:text-gray-300 leading-relaxed">
+        <p>
+          This Privacy Policy explains how information is collected, used, and protected when you visit this website.
+        </p>
 
-            <section className="space-y-6 text-gray-700 dark:text-gray-300">
-                <p>
-                    This Privacy Policy explains how we collect, use, disclose, and protect
-                    your information when you visit or use this website. We are committed
-                    to safeguarding your privacy and ensuring transparency in how your
-                    data is handled.
-                </p>
+        <section>
+          <h2 className="text-lg font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">1. Information We Collect</h2>
+          <ul className="list-disc pl-5 space-y-1 text-sm">
+            <li><strong>Contact data</strong> — name, email, phone number submitted via the contact form.</li>
+            <li><strong>Usage data</strong> — pages visited, device type, browser, general interaction patterns.</li>
+            <li><strong>Preference data</strong> — theme preference stored in localStorage.</li>
+          </ul>
+        </section>
 
-                <h2 className="text-xl font-semibold">1. Information We Collect</h2>
-                <p>We may collect the following types of information:</p>
-                <ul className="list-disc pl-6 space-y-2">
-                    <li>
-                        <strong>Personal Information:</strong> Name, email address, or other
-                        contact details you voluntarily provide through forms or inquiries.
-                    </li>
-                    <li>
-                        <strong>Usage Data:</strong> Pages visited, time spent on pages,
-                        device type, browser type, and general interaction data.
-                    </li>
-                    <li>
-                        <strong>Cookies and Tracking Technologies:</strong> Used to improve
-                        functionality and analyze traffic (see Cookie Policy).
-                    </li>
-                </ul>
+        <section>
+          <h2 className="text-lg font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">2. How We Use Your Information</h2>
+          <ul className="list-disc pl-5 space-y-1 text-sm">
+            <li>To respond to enquiries and provide requested services.</li>
+            <li>To improve website performance and user experience.</li>
+            <li>To maintain website security and prevent abuse.</li>
+          </ul>
+        </section>
 
-                <h2 className="text-xl font-semibold">2. How We Use Your Information</h2>
-                <ul className="list-disc pl-6 space-y-2">
-                    <li>To respond to inquiries and provide requested services</li>
-                    <li>To improve website performance and user experience</li>
-                    <li>To monitor and analyze usage trends</li>
-                    <li>To maintain website security and prevent abuse</li>
-                </ul>
+        <section>
+          <h2 className="text-lg font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">3. Data Sharing</h2>
+          <p className="text-sm">
+            Personal data is not sold or rented. Contact form submissions are processed via{' '}
+            <a href="https://resend.com" className="text-primary-600 dark:text-primary-400 underline" target="_blank" rel="noopener noreferrer">Resend</a>{' '}
+            for email delivery only.
+          </p>
+        </section>
 
-                <h2 className="text-xl font-semibold">3. Legal Basis for Processing</h2>
-                <p>
-                    We process personal data based on one or more of the following legal
-                    grounds: your consent, performance of a contract, compliance with
-                    legal obligations, or our legitimate interests in operating and
-                    improving this website.
-                </p>
+        <section>
+          <h2 className="text-lg font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">4. Your Rights</h2>
+          <p className="text-sm">
+            You may request access to, correction of, or deletion of your personal data at any time by contacting me directly.
+          </p>
+        </section>
 
-                <h2 className="text-xl font-semibold">4. Data Sharing</h2>
-                <p>
-                    We do not sell or rent your personal data. We may share data with
-                    trusted service providers (such as hosting or analytics providers)
-                    strictly for operational purposes and under appropriate safeguards.
-                </p>
-
-                <h2 className="text-xl font-semibold">5. Data Retention</h2>
-                <p>
-                    We retain personal data only for as long as necessary to fulfill the
-                    purposes outlined in this policy, unless a longer retention period is
-                    required or permitted by law.
-                </p>
-
-                <h2 className="text-xl font-semibold">6. Your Rights</h2>
-                <p>
-                    Depending on your location, you may have the right to access, correct,
-                    delete, or restrict the processing of your personal data. You may also
-                    withdraw consent at any time.
-                </p>
-
-                <h2 className="text-xl font-semibold">7. Security</h2>
-                <p>
-                    We implement appropriate technical and organizational measures to
-                    protect your data from unauthorized access, loss, or misuse. However,
-                    no system is completely secure.
-                </p>
-
-                <h2 className="text-xl font-semibold">8. Changes to This Policy</h2>
-                <p>
-                    We may update this Privacy Policy periodically. Any changes will be
-                    posted on this page with an updated revision date.
-                </p>
-
-                <h2 className="text-xl font-semibold">9. Contact</h2>
-                <p>
-                    If you have questions about this Privacy Policy or how your data is
-                    handled, please contact us through the information provided on this
-                    website.
-                </p>
-            </section>
-        </main>
-    );
+        <section>
+          <h2 className="text-lg font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">5. Contact</h2>
+          <p className="text-sm">
+            Questions about this policy? Reach out via the{' '}
+            <a href="/contact" className="text-primary-600 dark:text-primary-400 underline">contact page</a>.
+          </p>
+        </section>
+      </div>
+    </main>
+  );
 };
 
 export default PrivacyPolicyPage;

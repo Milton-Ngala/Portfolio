@@ -1,73 +1,47 @@
-'use client';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Cookie Policy',
+  description: 'Cookie Policy for miltonngala.com',
+};
 
 const CookiePolicyPage = () => {
-    return (
-        <main className="max-w-4xl mx-auto py-20 mt-15">
-            <h1 className="text-3xl font-bold mb-6">Cookie Policy</h1>
+  return (
+    <main className="pt-20 max-w-3xl mx-auto px-6 py-16">
+      <h1 className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">
+        Cookie Policy
+      </h1>
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-10">Last updated: January 2026</p>
 
-            <p className="text-gray-600 dark:text-gray-400 mb-8">
-                Last updated: January 2026
-            </p>
+      <div className="space-y-8 text-gray-700 dark:text-gray-300 leading-relaxed">
+        <p className="text-sm">
+          This policy explains what cookies are, how this site uses them, and your choices.
+        </p>
 
-            <section className="space-y-6 text-gray-700 dark:text-gray-300">
-                <p>
-                    This Cookie Policy explains what cookies are, how we use them, and your
-                    choices regarding their use
-                </p>
+        <section>
+          <h2 className="text-lg font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">1. What Are Cookies?</h2>
+          <p className="text-sm">
+            Cookies are small text files stored on your device when you visit a website. They help websites function correctly and remember your preferences.
+          </p>
+        </section>
 
-                <h2 className="text-xl font-semibold">1. What Are Cookies?</h2>
-                <p>
-                    Cookies are small text files stored on your device when you visit a
-                    website. They help websites function properly and provide information
-                    to site owners.
-                </p>
+        <section>
+          <h2 className="text-lg font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">2. Cookies We Use</h2>
+          <ul className="list-disc pl-5 space-y-1 text-sm">
+            <li><strong>Preference cookies</strong> — stores your dark/light theme choice in localStorage (not a cookie, no server transmission).</li>
+            <li>No analytics, advertising, or third-party tracking cookies are currently used.</li>
+          </ul>
+        </section>
 
-                <h2 className="text-xl font-semibold">2. Types of Cookies We Use</h2>
-                <ul className="list-disc pl-6 space-y-2">
-                    <li>
-                        <strong>Essential Cookies:</strong> Necessary for basic website
-                        functionality and security.
-                    </li>
-                    <li>
-                        <strong>Analytics Cookies:</strong> Help us understand how visitors
-                        interact with the site (used only with consent).
-                    </li>
-                    <li>
-                        <strong>Preference Cookies:</strong> Remember user settings and
-                        preferences.
-                    </li>
-                </ul>
-
-                <h2 className="text-xl font-semibold">3. How We Use Cookies</h2>
-                <p>
-                    Cookies are used to ensure proper website operation, improve
-                    performance, analyze traffic, and enhance user experience.
-                </p>
-
-                <h2 className="text-xl font-semibold">4. Your Cookie Choices</h2>
-                <p>
-                    When you first visit our website, you are asked to accept or reject
-                    non-essential cookies. You may change your preference at any time by
-                    clearing your browser cookies or using the cookie preferences option
-                    if available.
-                </p>
-
-                <h2 className="text-xl font-semibold">5. Third-Party Cookies</h2>
-                <p>
-                    Some cookies may be placed by third-party services we use for analytics
-                    or performance monitoring. These third parties have their own privacy
-                    policies.
-                </p>
-
-                <h2 className="text-xl font-semibold">6. Updates to This Policy</h2>
-                <p>
-                    We may update this Cookie Policy from time to time to reflect changes
-                    in technology or legal requirements.
-                </p>
-            </section>
-        </main>
-    );
+        <section>
+          <h2 className="text-lg font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">3. Your Choices</h2>
+          <p className="text-sm">
+            You can clear localStorage at any time via your browser settings. This will reset your theme preference to the default (dark mode).
+          </p>
+        </section>
+      </div>
+    </main>
+  );
 };
 
 export default CookiePolicyPage;
-

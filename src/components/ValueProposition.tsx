@@ -1,121 +1,107 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { TrendingUp, Users, CheckCircle, Award } from 'lucide-react';
 
+const stats = [
+  {
+    icon: TrendingUp,
+    number: '12+',
+    label: 'Systems Shipped',
+    description: 'Production apps across healthcare, travel, and enterprise',
+  },
+  {
+    icon: Users,
+    number: '180%',
+    label: 'Peak Impact',
+    description: 'Conversion uplift on a travel booking platform',
+  },
+  {
+    icon: CheckCircle,
+    number: '40%',
+    label: 'Wait Time Cut',
+    description: 'Patient wait time reduction via real-time queue system',
+  },
+  {
+    icon: Award,
+    number: 'Azure',
+    label: 'Certified',
+    description: 'Microsoft Azure Solutions Architect Expert',
+  },
+];
+
+const badges = [
+  'Microsoft Certified',
+  'Azure Solutions Architect',
+  'Clean Architecture',
+  'CI/CD & DevOps',
+  'Full-Stack .NET & React',
+];
+
 const ValueProposition = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.3,
-  });
-
-  const stats = [
-    {
-      icon: TrendingUp,
-      number: '12+',
-      label: 'Apps Delivered',
-      description: 'Successfully launched applications',
-    },
-    {
-      icon: Users,
-      number: '40%',
-      label: 'Performance Gain',
-      description: 'Average improvement in app performance',
-    },
-    {
-      icon: CheckCircle,
-      number: '100%',
-      label: 'On-Time Delivery',
-      description: 'Projects delivered on schedule',
-    },
-    {
-      icon: Award,
-      number: '5★',
-      label: 'Client Rating',
-      description: 'Average client satisfaction score',
-    },
-  ];
-
-  const trustBadges = [
-    'Microsoft Certified',
-    'Azure Solutions Architect',
-    'React Specialist',
-    'Enterprise Ready',
-  ];
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 });
 
   return (
-    <section id="value-proposition" className="prose prose-lg max-w-none rounded-2xl p-8 mb-12 mt-14">
-      <div className="container mx-auto px-6">
+    <section className="py-24 bg-white dark:bg-gray-900 border-y border-gray-100 dark:border-gray-800">
+      <div className="container-wide mx-auto px-6">
+        {/* Heading */}
         <motion.div
           ref={ref}
-          className="text-center mb-16 prose prose-lg max-w-none"
-          initial={{ opacity: 0, y: 30 }}
+          className="section-heading"
+          initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-heading font-bold">
-            Proven Results That Matter
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-4">
-            Delivering enterprise-grade solutions with measurable impact for businesses of all sizes
-          </p>
+          <h2>Outcomes, not just output</h2>
+          <p>Every project is measured by the business result it delivers.</p>
         </motion.div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {stats.map((stat, index) => (
+        {/* Stats grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
+          {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              className="text-center group"
-              initial={{ opacity: 0, y: 30 }}
+              className="card p-6 text-center group hover:shadow-card-md transition-shadow duration-300"
+              initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              whileHover={{ y: -3 }}
             >
-              <div className="bg-primary-50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-100 transition-colors duration-300">
-                <stat.icon className="w-10 h-10 text-primary-500" />
+              <div className="w-10 h-10 rounded-lg bg-primary-50 dark:bg-primary-900/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/40 transition-colors duration-300">
+                <stat.icon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
               </div>
-              <motion.div
-                className="text-4xl font-heading font-bold text-gray-600 dark:text-gray-400 mb-2"
-                initial={{ scale: 0 }}
-                animate={inView ? { scale: 1 } : {}}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: index * 0.1 + 0.3,
-                  type: 'spring',
-                  stiffness: 100
-                }}
-              >
+              <p className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-1 tabular-nums">
                 {stat.number}
-              </motion.div>
-              <h3 className="text-lg font-heading font-semibold text-gray-600 dark:text-gray-400 mb-1">
+              </p>
+              <p className="text-sm font-heading font-semibold text-gray-700 dark:text-gray-300 mb-1">
                 {stat.label}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-500 text-sm">
+              </p>
+              <p className="text-xs text-gray-500 dark:text-gray-500 leading-snug">
                 {stat.description}
               </p>
             </motion.div>
           ))}
         </div>
 
-        {/* Trust Badges */}
+        {/* Badges */}
         <motion.div
-          className="flex flex-wrap justify-center gap-6"
-          initial={{ opacity: 0, x: -30 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex flex-wrap justify-center gap-2"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
-          {trustBadges.map((badge, index) => (
-            <motion.div
+          {badges.map((badge, i) => (
+            <motion.span
               key={badge}
-              className="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-full border border-gray-200 dark:border-gray-700 hover:border-primary-200 hover:bg-primary-50 transition-all duration-300"
-              initial={{ opacity: 0, scale: 0.8 }}
+              className="tag hover:border-primary-400 dark:hover:border-primary-600 hover:text-primary-700 dark:hover:text-primary-400 transition-colors duration-200 cursor-default"
+              initial={{ opacity: 0, scale: 0.9 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.4, delay: 0.5 + i * 0.07 }}
+              whileHover={{ scale: 1.04 }}
             >
-              <span className="text-gray-700 dark:text-gray-500 font-medium text-sm">
-                {badge}
-              </span>
-            </motion.div>
+              {badge}
+            </motion.span>
           ))}
         </motion.div>
       </div>

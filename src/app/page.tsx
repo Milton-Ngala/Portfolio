@@ -1,141 +1,129 @@
 'use client';
 
-import { motion } from "framer-motion";
-import { ArrowRight, Calendar } from "lucide-react";
-import Link from "next/link";
-import FloatingElements from "@/components/FloatingElements";
-import TechTags from "@/components/TechTags";
-import About from "@/components/About";
-import Work from "@/components/Work";
-import ValueProposition from "@/components/ValueProposition";
-import Image from "next/image";
-import ngala from "../assets/ngala.png";
-import useTheme from "@/contexts/ThemeContext";
+import { motion } from 'framer-motion';
+import { ArrowRight, Calendar, ChevronDown } from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
+import FloatingElements from '@/components/FloatingElements';
+import TechTags from '@/components/TechTags';
+import About from '@/components/About';
+import WorkSection from '@/components/WorkSection';
+import ValueProposition from '@/components/ValueProposition';
+import ngala from '@/assets/ngala.png';
 
+// Shared animation variants
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, delay, ease: 'easeOut' },
+});
 
 const Home = () => {
-    const { theme } = useTheme();
-    const handleScheduleConsultation = () => {
-        window.open("https://calendly.com/milton-antony-ngala", "_blank");
-    };
+  return (
+    <>
+      {/* ── Hero ─────────────────────────────────────────────────────────── */}
+      <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-gray-50 dark:bg-gray-950">
+        {/* Subtle radial glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,theme(colors.primary.500/12%),transparent)] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,theme(colors.primary.500/8%),transparent)] pointer-events-none" />
+        <FloatingElements />
 
-    return (
-        <>
-            <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-primary-50/30 dark:from-gray-900 dark:via-gray-800 dark:to-primary-900/20">
-                <FloatingElements />
+        <div className="relative z-10 container-content mx-auto px-6 text-center pt-24 pb-16">
+          {/* Status badge */}
+          <motion.div className="mb-8" {...fadeUp(0.1)}>
+            <span className="inline-flex items-center gap-2 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400 px-4 py-1.5 rounded-full text-sm font-medium border border-primary-200 dark:border-primary-800/60">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse-dot" />
+              Available for new projects
+            </span>
+          </motion.div>
 
-                <div className="relative z-10 container mx-auto px-6 text-center max-w-4xl mb-5">
-                    {/* Greeting */}
-                    <motion.div
-                        className="mb-8"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                    >
-                        <span className="inline-block bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 px-4 py-2 rounded-full text-sm font-medium mb-4">
-                            👋 Hi there!
-                        </span>
-                    </motion.div>
+          {/* Avatar */}
+          <motion.div className="mb-8 flex justify-center" {...fadeUp(0.2)}>
+            <Image
+              src={ngala}
+              alt="Milton Ngala"
+              width={120}
+              height={120}
+              className="rounded-full ring-4 ring-primary-200 dark:ring-primary-800/60 shadow-card-lg"
+              priority
+            />
+          </motion.div>
 
-                    {/* Main Headline */}
-                    <motion.h1
-                        className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-gray-900 dark:text-gray-100 mb-6 leading-tight"
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                    >
-                        I'm{" "}
-                        <span className="text-primary-600 dark:text-primary-400">
-                            Milton Ngala
-                        </span>
-                        <br />
-                        <span className="text-gray-600 dark:text-gray-400">
-                            a Software Engineer
-                        </span>
-                        <br />
-                        <span className="bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent"></span>
-                    </motion.h1>
-                    <motion.div
-                        className="mb-8 flex justify-center"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                    >
-                        {theme === "dark" ? <Image src={ngala} alt="Hero" width={150} height={150} className="rounded-full" /> : <Image src={ngala} alt="Hero" width={150} height={150} className="rounded-full" />}
-                    </motion.div>
+          {/* Headline */}
+          <motion.h1
+            className="text-display font-heading font-bold text-gray-900 dark:text-gray-50 mb-5 text-balance"
+            {...fadeUp(0.3)}
+          >
+            Milton Ngala
+            <br />
+            <span className="text-gradient">Senior Software Engineer</span>
+          </motion.h1>
 
-                    {/* Supporting Text */}
-                    <motion.p
-                        className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
-                    >
-                        Open to meaningful conversations and new opportunities,{" "}
-                        <span className="font-semibold text-gray-800 dark:text-gray-200">
-                            I design and build software that solves real-world problems
-                        </span>
-                        .
-                    </motion.p>
+          {/* Sub-headline */}
+          <motion.p
+            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed"
+            {...fadeUp(0.4)}
+          >
+            I design and build{' '}
+            <span className="font-semibold text-gray-800 dark:text-gray-200">
+              production-grade systems
+            </span>{' '}
+            — scalable APIs, cloud infrastructure, and polished interfaces — that move business metrics.
+          </motion.p>
 
-                    {/* Tech Tags */}
-                    <TechTags />
-                    {/* Call to Action Buttons */}
-                    <motion.div
-                        className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 1.0 }}
-                    >
-                        <Link href="/work">
-                            <motion.button
-                                className="bg-primary-600 dark:bg-primary-500 text-white px-8 py-4 rounded-lg font-heading font-semibold text-lg hover:bg-primary-700 dark:hover:bg-primary-600 transition-all duration-300 flex items-center gap-2 shadow-lg"
-                                whileHover={{
-                                    scale: 1.05,
-                                    boxShadow: "0 20px 40px rgba(0, 18, 51, 0.2)",
-                                }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                See My Work
-                                <ArrowRight size={20} />
-                            </motion.button>
-                        </Link>
+          {/* Tech tags */}
+          <motion.div {...fadeUp(0.5)}>
+            <TechTags />
+          </motion.div>
 
-                        <motion.button
-                            onClick={handleScheduleConsultation}
-                            className="bg-transparent border-2 border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400 px-8 py-4 rounded-lg font-heading font-semibold text-lg hover:bg-primary-600 dark:hover:bg-primary-400 hover:text-white dark:hover:text-gray-900 transition-all duration-300 flex items-center gap-2"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <Calendar size={20} />
-                            Book a Consultation
-                        </motion.button>
-                    </motion.div>
+          {/* CTAs */}
+          <motion.div
+            className="flex flex-col sm:flex-row gap-3 justify-center items-center mt-10"
+            {...fadeUp(0.6)}
+          >
+            <Link href="/work">
+              <motion.button
+                className="btn-primary text-base px-7 py-3.5"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                View Case Studies
+                <ArrowRight size={18} />
+              </motion.button>
+            </Link>
+            <motion.button
+              onClick={() => window.open('https://calendly.com/milton-antony-ngala', '_blank')}
+              className="btn-ghost text-base px-7 py-3.5"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              <Calendar size={18} />
+              Book a Call
+            </motion.button>
+          </motion.div>
 
-                    {/* Scroll Indicator */}
-                    <motion.div
-                        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 1.4 }}
-                    >
-                        <Link href="/about">
-                            <motion.button
-                                className="text-gray-400 dark:text-gray-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300"
-                                animate={{ y: [0, 10, 0] }}
-                                transition={{ duration: 2, repeat: Infinity }}
-                            >
-                                {/* <ChevronDown size={32} /> */}
-                            </motion.button>
-                        </Link>
-                    </motion.div>
-                </div>
-                <ValueProposition />
-                <About />
-                <Work />
-            </section>
-        </>
-    );
+          {/* Scroll cue */}
+          <motion.div
+            className="mt-16 flex justify-center text-gray-400 dark:text-gray-600"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+          >
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <ChevronDown size={24} />
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Below-fold ───────────────────────────────────────────────────── */}
+      <ValueProposition />
+      <About />
+      <WorkSection />
+    </>
+  );
 };
 
 export default Home;
