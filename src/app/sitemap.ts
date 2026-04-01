@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 const sitemap = (): MetadataRoute.Sitemap => {
-  const base = 'https://miltonngala.com';
+  const base = 'https://ngala.co.ke';
   const routes = ['', '/about', '/work', '/tech', '/contact'];
 
   return routes.map((route) => ({
