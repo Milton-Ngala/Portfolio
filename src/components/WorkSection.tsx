@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ExternalLink, ChevronDown } from 'lucide-react';
+import { ArrowRight, ExternalLink, ChevronDown, Github } from 'lucide-react';
 import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 import projects from '@/data/projects';
@@ -50,6 +50,9 @@ const WorkSection = () => {
                         <h3 className="text-xl font-heading font-bold text-gray-900 dark:text-gray-50 mt-0.5">
                           {project.title}
                         </h3>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 font-mono">
+                          {project.role}
+                        </p>
                       </div>
                       <span className="text-xs text-gray-400 dark:text-gray-500 shrink-0 mt-1">
                         {project.year}
@@ -72,7 +75,7 @@ const WorkSection = () => {
                       ))}
                     </div>
                   </div>
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+                  <div className="flex items-center gap-4 pt-4 border-t border-gray-100 dark:border-gray-700">
                     <motion.button
                       onClick={() => setExpandedId(expandedId === project.id ? null : project.id)}
                       className="inline-flex items-center gap-1.5 text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200"
@@ -95,6 +98,17 @@ const WorkSection = () => {
                       <ExternalLink size={13} />
                       Live site
                     </Link>
+                    {project.github && (
+                      <Link
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs text-gray-400 dark:text-gray-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                      >
+                        <Github size={13} />
+                        Code
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
