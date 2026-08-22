@@ -137,18 +137,24 @@ const Header = () => {
             className="md:hidden overflow-hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900"
           >
             <div className="px-4 py-3 space-y-1">
-              {navItems.map((item) => (
-                <Link
+              {navItems.map((item, i) => (
+                <motion.div
                   key={item.href}
-                  href={item.href}
-                  className={`block px-3 py-2.5 rounded-md text-sm font-medium transition-colors duration-200 ${
-                    isActive(item.href)
-                      ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400'
-                      : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100'
-                  }`}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.2, delay: i * 0.05 }}
                 >
-                  {item.label}
-                </Link>
+                  <Link
+                    href={item.href}
+                    className={`block px-3 py-2.5 rounded-md text-sm font-medium transition-colors duration-200 ${
+                      isActive(item.href)
+                        ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400'
+                        : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </motion.div>

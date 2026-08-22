@@ -182,4 +182,10 @@
     border-color: var(--border);
     @apply border-t;
   }
+
+  /* Dot grid hero background */
+  .bg-dot-grid {
+    background-image: radial-gradient(circle, theme('colors.primary.500' / 30%) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
 }

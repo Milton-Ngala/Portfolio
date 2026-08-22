@@ -81,6 +81,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       className={`${montserrat.variable} ${openSans.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body
         suppressHydrationWarning
         className="min-h-screen font-sans antialiased transition-colors duration-300"
