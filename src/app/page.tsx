@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Calendar, Download, ChevronDown, Building2, Rocket } from 'lucide-react';
+import { ArrowRight, Calendar, ChevronDown, Building2, Rocket } from 'lucide-react';
 import Image from 'next/image';
 import FloatingElements from '@/components/FloatingElements';
 import TechTags from '@/components/TechTags';
@@ -169,14 +169,6 @@ const Home = () => (
           className="flex items-center justify-center gap-6 mt-8"
           {...fadeUp(0.85)}
         >
-          <a
-            href="/milton-ngala-cv.pdf"
-            download
-            className="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
-          >
-            <Download size={14} />
-            Download CV
-          </a>
           <motion.button
             onClick={() => window.open('https://calendly.com/milton-antony-ngala', '_blank')}
             className="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"

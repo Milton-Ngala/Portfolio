@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import { WhatsAppOutlined, GithubOutlined } from '@ant-design/icons';
@@ -26,15 +27,23 @@ const Footer = () => {
 
           {/* Brand */}
           <div>
-            <motion.p
-              className="font-mono font-semibold text-xl bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent mb-3"
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
+              className="mb-3"
             >
-              Milton Ngala
-            </motion.p>
+              <Link href="/" aria-label="Milton Ngala — home">
+                <Image
+                  src="/Ngala_Logo.png"
+                  alt="Milton Ngala"
+                  width={120}
+                  height={36}
+                  className="h-9 w-auto object-contain dark:brightness-90"
+                />
+              </Link>
+            </motion.div>
             <motion.p
               className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-5"
               initial={{ opacity: 0, y: 20 }}
