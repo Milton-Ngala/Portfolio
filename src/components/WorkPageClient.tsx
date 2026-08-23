@@ -2,19 +2,19 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ExternalLink, ChevronDown, Github } from 'lucide-react';
+import { ArrowRight, ExternalLink, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
 import projects from '@/data/projects';
 import LivePreview from '@/components/common/LivePreview';
 
-const WorkSection = () => {
+const WorkPageClient = () => {
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
 
   return (
-    <section className="py-24 bg-white dark:bg-gray-900">
+    <section className="py-24 bg-gray-50 dark:bg-gray-950 min-h-screen">
       <div className="container-wide mx-auto px-6">
         <motion.div
           ref={ref}
@@ -23,8 +23,8 @@ const WorkSection = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2>Selected Case Studies</h2>
-          <p>Production systems built to solve real business problems with measurable outcomes.</p>
+          <h1>Case Studies</h1>
+          <p>Production systems built to solve real business problems — with measurable outcomes.</p>
         </motion.div>
 
         <div className="space-y-8">
@@ -40,7 +40,6 @@ const WorkSection = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="lg:border-r border-gray-100 dark:border-gray-700">
                   {project.thumbnail ? (
-                    /* Screenshot thumbnail — shown when a path has been supplied */
                     <div className="relative w-full aspect-video overflow-hidden bg-gray-100 dark:bg-gray-800">
                       <Image
                         src={project.thumbnail}
@@ -51,10 +50,13 @@ const WorkSection = () => {
                       />
                     </div>
                   ) : (
-                    /* Fallback: live iframe preview */
-                    <LivePreview url={project.link} title={`Preview of ${project.title}`} />
+                    <LivePreview
+                      url={project.link}
+                      title={`Preview of ${project.title}`}
+                    />
                   )}
                 </div>
+
                 <div className="p-7 flex flex-col justify-between">
                   <div>
                     <div className="flex items-start justify-between gap-4 mb-3">
@@ -62,44 +64,47 @@ const WorkSection = () => {
                         <span className="text-xs font-mono font-medium text-primary-600 dark:text-primary-400 uppercase tracking-wider">
                           {project.industry}
                         </span>
-                        <h3 className="text-xl font-heading font-bold text-gray-900 dark:text-gray-50 mt-0.5">
+                        <h2 className="text-xl font-heading font-bold text-gray-900 dark:text-gray-50 mt-0.5">
                           {project.title}
-                        </h3>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 font-mono">
-                          {project.role}
-                        </p>
+                        </h2>
                       </div>
                       <span className="text-xs text-gray-400 dark:text-gray-500 shrink-0 mt-1">
                         {project.year}
                       </span>
                     </div>
+
                     {project.metrics && (
                       <div className="flex flex-wrap gap-x-5 gap-y-2 mb-4">
                         {project.metrics.map((m) => (
                           <div key={m.label} className="flex items-center gap-1.5 text-xs">
                             <m.icon className="w-3.5 h-3.5 text-primary-500 dark:text-primary-400 shrink-0" />
                             <span className="font-semibold text-gray-800 dark:text-gray-200">{m.value}</span>
-                            <span className="text-gray-500">{m.label}</span>
+                            <span className="text-gray-500 dark:text-gray-500">{m.label}</span>
                           </div>
                         ))}
                       </div>
                     )}
+
                     <div className="flex flex-wrap gap-1.5 mb-5">
                       {project.tech.map((t) => (
                         <span key={t} className="tag">{t}</span>
                       ))}
                     </div>
                   </div>
-                  <div className="flex items-center gap-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
                     <motion.button
                       onClick={() => setExpandedId(expandedId === project.id ? null : project.id)}
                       className="inline-flex items-center gap-1.5 text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200"
                       whileHover={{ x: 2 }}
+                      aria-expanded={expandedId === project.id}
+                      aria-controls={`case-study-${project.id}`}
                     >
-                      {expandedId === project.id ? 'Hide details' : 'View case study'}
+                      {expandedId === project.id ? 'Hide details' : `View ${project.title} case study`}
                       <motion.span
                         animate={{ rotate: expandedId === project.id ? 180 : 0 }}
                         transition={{ duration: 0.2 }}
+                        aria-hidden="true"
                       >
                         <ChevronDown size={15} />
                       </motion.span>
@@ -109,27 +114,19 @@ const WorkSection = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-xs text-gray-400 dark:text-gray-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                      aria-label={`Visit ${project.title} live site`}
                     >
-                      <ExternalLink size={13} />
+                      <ExternalLink size={13} aria-hidden="true" />
                       Live site
                     </Link>
-                    {project.github && (
-                      <Link
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs text-gray-400 dark:text-gray-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
-                      >
-                        <Github size={13} />
-                        Code
-                      </Link>
-                    )}
                   </div>
                 </div>
               </div>
+
               <AnimatePresence initial={false}>
                 {expandedId === project.id && (
                   <motion.div
+                    id={`case-study-${project.id}`}
                     key="details"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
@@ -137,11 +134,9 @@ const WorkSection = () => {
                     transition={{ duration: 0.25, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <div className="px-7 pb-7 pt-4 border-t border-gray-100 dark:border-gray-700">
-                      {/* Three-part narrative (when available) */}
+                    <div className="px-7 pb-7 pt-2 border-t border-gray-100 dark:border-gray-700">
                       {project.narrative ? (
                         <div className="grid md:grid-cols-3 gap-6">
-                          {/* Business Impact */}
                           <div className="bg-primary-50 dark:bg-primary-900/10 rounded-xl p-4 border border-primary-100 dark:border-primary-800/30">
                             <p className="text-xs font-heading font-semibold uppercase tracking-wider text-primary-600 dark:text-primary-400 mb-2">
                               Business Impact
@@ -150,7 +145,6 @@ const WorkSection = () => {
                               {project.narrative.businessImpact}
                             </p>
                           </div>
-                          {/* Architectural Deep-Dive */}
                           <div className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4 border border-gray-100 dark:border-gray-700/50">
                             <p className="text-xs font-heading font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
                               Architectural Deep-Dive
@@ -159,7 +153,6 @@ const WorkSection = () => {
                               {project.narrative.architecturalDeepDive}
                             </p>
                           </div>
-                          {/* Frontend Execution */}
                           <div className="bg-accent-50 dark:bg-accent-900/10 rounded-xl p-4 border border-accent-100 dark:border-accent-800/30">
                             <p className="text-xs font-heading font-semibold uppercase tracking-wider text-accent-600 dark:text-accent-400 mb-2">
                               Frontend Execution
@@ -170,7 +163,6 @@ const WorkSection = () => {
                           </div>
                         </div>
                       ) : (
-                        /* Legacy fallback — challenge / solution / outcome */
                         <div className="grid md:grid-cols-3 gap-6">
                           {[
                             { label: 'Challenge', content: project.challenge },
@@ -180,7 +172,9 @@ const WorkSection = () => {
                               <p className="text-xs font-heading font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-2">
                                 {label}
                               </p>
-                              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{content}</p>
+                              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                {content}
+                              </p>
                             </div>
                           ))}
                           <div>
@@ -190,7 +184,7 @@ const WorkSection = () => {
                             <ul className="space-y-1.5">
                               {project.outcome?.map((o, idx) => (
                                 <li key={idx} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
-                                  <span className="w-1 h-1 rounded-full bg-primary-500 mt-2 shrink-0" />
+                                  <span className="w-1 h-1 rounded-full bg-primary-500 mt-2 shrink-0" aria-hidden="true" />
                                   {o}
                                 </li>
                               ))}
@@ -219,7 +213,7 @@ const WorkSection = () => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
-              Let's talk about your project
+              Let&apos;s talk about your project
               <ArrowRight size={16} />
             </motion.button>
           </Link>
@@ -229,4 +223,4 @@ const WorkSection = () => {
   );
 };
 
-export default WorkSection;
+export default WorkPageClient;

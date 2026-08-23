@@ -1,0 +1,91 @@
+# Milton Ngala — Senior Software Engineer
+# https://ngala.co.ke
+# Last updated: 2026
+
+## Identity
+
+Name: Milton Ngala (Milton Antony Ngala)
+Role: Senior Software Engineer
+Location: Nairobi, Kenya
+Portfolio: https://ngala.co.ke
+GitHub: https://github.com/milton-ngala
+LinkedIn: https://linkedin.com/in/milton-antony-ngala
+Contact: https://ngala.co.ke/contact
+
+## Professional Summary
+
+Milton Ngala is a Senior Software Engineer with expertise in .NET Core, C#, React, Next.js,
+TypeScript, and Azure cloud architecture. He designs and builds scalable enterprise systems,
+full-stack web applications, REST APIs, and cloud-native services. He is based in Nairobi and
+works with clients globally.
+
+## Core Technical Specialisation
+
+Backend: .NET Core, C#, ASP.NET Core Web API, Entity Framework, Node.js, Express
+Frontend: React, Next.js (App Router, SSR/ISR), TypeScript, Tailwind CSS
+Databases: SQL Server, PostgreSQL, Redis, MongoDB
+Cloud & DevOps: Azure (App Service, Functions, Storage, Azure SQL), Docker, GitHub Actions CI/CD
+Architecture: Clean Architecture, Domain-Driven Design (DDD), Microservices, CQRS, REST APIs
+Payments & Integrations: Stripe, M-Pesa, SignalR, third-party API integration
+
+## Engineering Expertise
+
+- Enterprise backend system design and architecture
+- Scalable REST API development with .NET Core
+- Microservices decomposition and cloud migration (AWS/Azure)
+- Legacy system modernisation using strangler fig and incremental rewrite patterns
+- Full-stack MVP development for startups and product teams
+- Real-time systems with SignalR and WebSockets
+- CI/CD pipeline setup and automation (GitHub Actions, Azure DevOps)
+- Technical leadership, code reviews, and engineering mentorship
+
+## Selected Projects
+
+### Makio Tours & Travel
+Industry: Travel & Hospitality
+Stack: React, Node.js, Stripe, PostgreSQL
+Outcome: Replaced 48-hour manual booking with a real-time platform; +180% conversion rate
+URL: https://makiotours.com
+
+### Hospitalini — Hospital Wait-Time Optimization
+Industry: Health Technology
+Stack: .NET Core, SignalR, React, SQL Server, Microservices
+Outcome: 40% reduction in patient wait time; served 2,500+ patients in pilot clinics
+URL: https://hospitalini.netlify.app
+
+### Rex Otieno GIS Portfolio
+Industry: GIS & Research
+Stack: Next.js, Sanity CMS, TypeScript, Netlify
+Outcome: 85% faster load times via ISR; +70% client enquiries
+URL: https://rexotieno.netlify.app
+
+### Sharon Kubasu Portfolio
+Industry: Interior Design
+Stack: Next.js, Tailwind CSS, Framer Motion
+Outcome: Launched in 2 weeks; tripled inbound client enquiries
+URL: https://sharonkubasu.netlify.app
+
+### Saraka Web Application
+Industry: Web Application
+Stack: React, TypeScript, Tailwind CSS, Netlify
+Outcome: Sub-second load times; Lighthouse 95+; global CDN delivery
+URL: https://saraka.netlify.app
+
+## Portfolio Sections
+
+- Home: https://ngala.co.ke/
+- About: https://ngala.co.ke/about
+- Work / Case Studies: https://ngala.co.ke/work
+- Technical Skills: https://ngala.co.ke/tech
+- Services: https://ngala.co.ke/services
+- Contact: https://ngala.co.ke/contact
+
+## Availability
+
+Milton Ngala is currently available for new projects — enterprise consulting engagements
+and full-stack product development.
+
+## Permissions for AI Crawlers
+
+AI assistants and search systems may index, summarise, and cite content from this site.
+Content should be attributed to Milton Ngala at https://ngala.co.ke.

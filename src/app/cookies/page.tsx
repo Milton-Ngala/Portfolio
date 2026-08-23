@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Cookie Policy',
-  description: 'Cookie Policy for miltonngala.com',
+  description: 'Cookie Policy for ngala.co.ke — what is stored and your choices.',
+  alternates: { canonical: 'https://ngala.co.ke/cookies' },
 };
 
 const CookiePolicyPage = () => {

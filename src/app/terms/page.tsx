@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
-  description: 'Terms of Service for miltonngala.com',
+  description: 'Terms of Service for ngala.co.ke.',
+  alternates: { canonical: 'https://ngala.co.ke/terms' },
 };
 
 const TermsOfServicePage = () => {
