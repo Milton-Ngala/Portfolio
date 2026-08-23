@@ -123,28 +123,66 @@ const WorkSection = () => {
                     className="overflow-hidden"
                   >
                     <div className="px-7 pb-7 pt-4 border-t border-gray-100 dark:border-gray-700">
-                      <div className="grid md:grid-cols-3 gap-6">
-                        {[
-                          { label: 'Challenge', content: project.challenge },
-                          { label: 'Solution', content: project.solution },
-                        ].map(({ label, content }) => (
-                          <div key={label}>
-                            <p className="text-xs font-heading font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-2">{label}</p>
-                            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{content}</p>
+                      {/* Three-part narrative (when available) */}
+                      {project.narrative ? (
+                        <div className="grid md:grid-cols-3 gap-6">
+                          {/* Business Impact */}
+                          <div className="bg-primary-50 dark:bg-primary-900/10 rounded-xl p-4 border border-primary-100 dark:border-primary-800/30">
+                            <p className="text-xs font-heading font-semibold uppercase tracking-wider text-primary-600 dark:text-primary-400 mb-2">
+                              Business Impact
+                            </p>
+                            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                              {project.narrative.businessImpact}
+                            </p>
                           </div>
-                        ))}
-                        <div>
-                          <p className="text-xs font-heading font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-2">Outcome</p>
-                          <ul className="space-y-1.5">
-                            {project.outcome?.map((o, idx) => (
-                              <li key={idx} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
-                                <span className="w-1 h-1 rounded-full bg-primary-500 mt-2 shrink-0" />
-                                {o}
-                              </li>
-                            ))}
-                          </ul>
+                          {/* Architectural Deep-Dive */}
+                          <div className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4 border border-gray-100 dark:border-gray-700/50">
+                            <p className="text-xs font-heading font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
+                              Architectural Deep-Dive
+                            </p>
+                            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                              {project.narrative.architecturalDeepDive}
+                            </p>
+                          </div>
+                          {/* Frontend Execution */}
+                          <div className="bg-accent-50 dark:bg-accent-900/10 rounded-xl p-4 border border-accent-100 dark:border-accent-800/30">
+                            <p className="text-xs font-heading font-semibold uppercase tracking-wider text-accent-600 dark:text-accent-400 mb-2">
+                              Frontend Execution
+                            </p>
+                            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                              {project.narrative.frontendExecution}
+                            </p>
+                          </div>
                         </div>
-                      </div>
+                      ) : (
+                        /* Legacy fallback — challenge / solution / outcome */
+                        <div className="grid md:grid-cols-3 gap-6">
+                          {[
+                            { label: 'Challenge', content: project.challenge },
+                            { label: 'Solution', content: project.solution },
+                          ].map(({ label, content }) => (
+                            <div key={label}>
+                              <p className="text-xs font-heading font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-2">
+                                {label}
+                              </p>
+                              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{content}</p>
+                            </div>
+                          ))}
+                          <div>
+                            <p className="text-xs font-heading font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-2">
+                              Outcome
+                            </p>
+                            <ul className="space-y-1.5">
+                              {project.outcome?.map((o, idx) => (
+                                <li key={idx} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+                                  <span className="w-1 h-1 rounded-full bg-primary-500 mt-2 shrink-0" />
+                                  {o}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </motion.div>
                 )}

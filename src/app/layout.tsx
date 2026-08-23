@@ -43,6 +43,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Milton Ngala', url: 'https://miltonngala.com' }],
   creator: 'Milton Ngala',
+  icons: {
+    icon: '/Ngala_Logo.png',
+    shortcut: '/Ngala_Logo.png',
+    apple: '/Ngala_Logo.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',

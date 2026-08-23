@@ -5,17 +5,25 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, Calendar, Send, ExternalLink, Clock, CheckCircle } from 'lucide-react';
 import { WhatsAppOutlined, CoffeeOutlined } from '@ant-design/icons';
-import services from '@/constants/services';
+
+/** Collaboration type options for the tiered intake dropdown */
+const COLLABORATION_OPTIONS = [
+  'Corporate / Enterprise Consulting',
+  'Freelance Project / MVP',
+  'Other',
+] as const;
+
+type CollaborationType = typeof COLLABORATION_OPTIONS[number];
 
 type FormData = {
   name: string;
   email: string;
   phone: string;
   message: string;
-  projectType: string;
+  collaborationType: CollaborationType;
 };
 
-type FormErrors = Partial<FormData>;
+type FormErrors = Partial<Record<keyof FormData, string>>;
 
 const Contact = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -25,7 +33,7 @@ const Contact = () => {
     email: '',
     phone: '',
     message: '',
-    projectType: services[0].name,
+    collaborationType: COLLABORATION_OPTIONS[0],
   };
 
   const [formData, setFormData] = useState<FormData>(initialForm);
@@ -111,9 +119,9 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      description: 'milton.antony.ngala@gmail.com',
+      description: 'milton@ngala.co.ke',
       cta: 'Send',
-      action: () => window.open('mailto:milton.antony.ngala@gmail.com'),
+      action: () => window.open('mailto:milton@ngala.co.ke'),
       primary: false,
     },
     {
@@ -213,22 +221,34 @@ const Contact = () => {
             <h2 className="text-h3 mb-6">Start a project</h2>
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               <div>
-                <input name="name" placeholder="Your name" value={formData.name} onChange={handleInputChange} className="input" />
-                {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
+                <label htmlFor="collaborationType" className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1.5">
+                  How can we collaborate?
+                </label>
+                <select
+                  id="collaborationType"
+                  name="collaborationType"
+                  value={formData.collaborationType}
+                  onChange={handleInputChange}
+                  className="input"
+                  aria-label="Collaboration type"
+                >
+                  {COLLABORATION_OPTIONS.map((opt) => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
               </div>
               <div>
-                <input name="email" type="email" placeholder="Email address" value={formData.email} onChange={handleInputChange} className="input" />
-                {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+                <input name="name" placeholder="Your name" value={formData.name} onChange={handleInputChange} className="input" aria-label="Your name" />
+                {errors.name && <p className="mt-1 text-xs text-red-500" role="alert">{errors.name}</p>}
               </div>
               <div>
-                <input name="phone" type="tel" placeholder="Phone number" value={formData.phone} onChange={handleInputChange} className="input" />
-                {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
+                <input name="email" type="email" placeholder="Email address" value={formData.email} onChange={handleInputChange} className="input" aria-label="Email address" />
+                {errors.email && <p className="mt-1 text-xs text-red-500" role="alert">{errors.email}</p>}
               </div>
-              <select name="projectType" value={formData.projectType} onChange={handleInputChange} className="input">
-                {services.map((s) => (
-                  <option key={s.name} value={s.name}>{s.name}</option>
-                ))}
-              </select>
+              <div>
+                <input name="phone" type="tel" placeholder="Phone number" value={formData.phone} onChange={handleInputChange} className="input" aria-label="Phone number" />
+                {errors.phone && <p className="mt-1 text-xs text-red-500" role="alert">{errors.phone}</p>}
+              </div>
               <div>
                 <textarea
                   name="message"
@@ -238,7 +258,7 @@ const Contact = () => {
                   onChange={handleInputChange}
                   className="input resize-none"
                 />
-                {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message}</p>}
+                {errors.message && <p className="mt-1 text-xs text-red-500" role="alert">{errors.message}</p>}
               </div>
 
               <motion.button

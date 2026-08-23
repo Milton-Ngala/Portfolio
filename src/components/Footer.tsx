@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import { WhatsAppOutlined, GithubOutlined } from '@ant-design/icons';
@@ -10,7 +11,7 @@ import { navItems } from '@/constants/navItems';
 const socialLinks = [
   { icon: GithubOutlined, href: 'https://github.com/milton-ngala', label: 'GitHub' },
   { icon: Linkedin, href: 'https://linkedin.com/in/milton-antony-ngala', label: 'LinkedIn' },
-  { icon: Mail, href: 'mailto:milton.antony.ngala@gmail.com', label: 'Email' },
+  { icon: Mail, href: 'mailto:milton@ngala.co.ke', label: 'Email' },
   { icon: WhatsAppOutlined, href: 'https://wa.me/254741760092', label: 'WhatsApp' },
 ];
 
@@ -26,15 +27,23 @@ const Footer = () => {
 
           {/* Brand */}
           <div>
-            <motion.p
-              className="font-mono font-semibold text-xl bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent mb-3"
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
+              className="mb-3"
             >
-              Milton Ngala
-            </motion.p>
+              <Link href="/" aria-label="Milton Ngala — home">
+                <Image
+                  src="/Ngala_Logo.png"
+                  alt="Milton Ngala"
+                  width={120}
+                  height={36}
+                  className="h-9 w-auto object-contain dark:brightness-90"
+                />
+              </Link>
+            </motion.div>
             <motion.p
               className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-5"
               initial={{ opacity: 0, y: 20 }}
@@ -160,11 +169,11 @@ const Footer = () => {
                 +254 741 760 092
               </a>
               <a
-                href="mailto:milton.antony.ngala@gmail.com"
+                href="mailto:milton@ngala.co.ke"
                 className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
               >
                 <Mail className="w-4 h-4 shrink-0" />
-                milton.antony.ngala@gmail.com
+                milton@ngala.co.ke
               </a>
               <p className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <MapPin className="w-4 h-4 shrink-0" />

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon } from 'lucide-react';
@@ -39,13 +40,17 @@ const Header = () => {
     >
       <nav className="container-wide mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="group">
-          <motion.span
-            className="font-mono font-semibold text-base text-gray-900 dark:text-gray-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200"
-            whileHover={{ x: 2 }}
-          >
-            Milton Ngala
-          </motion.span>
+        <Link href="/" className="group flex items-center" aria-label="Milton Ngala — home">
+          <motion.div whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
+            <Image
+              src="/Ngala_Logo.png"
+              alt="Milton Ngala"
+              width={120}
+              height={36}
+              className="h-9 w-auto object-contain dark:brightness-90"
+              priority
+            />
+          </motion.div>
         </Link>
 
         {/* Desktop nav */}
