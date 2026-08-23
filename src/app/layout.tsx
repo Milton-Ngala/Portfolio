@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://ngala.co.ke',
     siteName: 'Milton Ngala',
-    title: 'Milton Ngala — Senior Software Engineer',
+    title: 'Milton Ngala - Software Engineer',
     description:
       'Senior Software Engineer specialising in full-stack web applications, cloud architecture, and scalable systems.',
     images: [
