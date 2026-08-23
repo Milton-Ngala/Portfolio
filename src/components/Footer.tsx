@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { Linkedin, Mail, MapPin, Phone, FileText } from 'lucide-react';
 import { WhatsAppOutlined, GithubOutlined } from '@ant-design/icons';
 import services from '@/constants/services';
 import { navItems } from '@/constants/navItems';
@@ -11,9 +11,34 @@ import { navItems } from '@/constants/navItems';
 const socialLinks = [
   { icon: GithubOutlined, href: 'https://github.com/milton-ngala', label: 'GitHub' },
   { icon: Linkedin, href: 'https://linkedin.com/in/milton-antony-ngala', label: 'LinkedIn' },
-  { icon: Mail, href: 'mailto:milton@ngala.co.ke', label: 'Email' },
+  { icon: Mail, href: '#contact-email', label: 'Email', isEmail: true },
   { icon: WhatsAppOutlined, href: 'https://wa.me/254741760092', label: 'WhatsApp' },
 ];
+
+/**
+ * Obfuscated email link — assembles the mailto: on click rather than
+ * baking the full address into the static HTML, reducing harvesting by
+ * simple scrapers while remaining fully accessible and functional.
+ */
+const EmailLink = ({
+  className,
+  children,
+}: {
+  className: string;
+  children: React.ReactNode;
+}) => (
+  <a
+    href="#contact-email"
+    className={className}
+    onClick={(e) => {
+      e.preventDefault();
+      window.location.href = ['mailto', ':', 'milton', '@', 'ngala.co.ke'].join('');
+    }}
+    aria-label="Send email to Milton Ngala"
+  >
+    {children}
+  </a>
+);
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -64,12 +89,16 @@ const Footer = () => {
                 <motion.a
                   key={s.label}
                   href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={s.isEmail ? undefined : '_blank'}
+                  rel={s.isEmail ? undefined : 'noopener noreferrer'}
                   aria-label={s.label}
                   className="bg-gray-200 dark:bg-gray-800 hover:bg-primary-600 dark:hover:bg-primary-600 p-2.5 rounded-lg transition-all duration-300 group"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={s.isEmail ? (e) => {
+                    e.preventDefault();
+                    window.location.href = ['mailto', ':', 'milton', '@', 'ngala.co.ke'].join('');
+                  } : undefined}
                 >
                   <s.icon className="w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-white transition-colors duration-300" />
                 </motion.a>
@@ -107,6 +136,33 @@ const Footer = () => {
                   </Link>
                 </li>
               ))}
+              {/* Professional links always visible to recruiters */}
+              <li>
+                <a
+                  href="https://linkedin.com/in/milton-antony-ngala"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                >
+                  <motion.span whileHover={{ x: 4 }} className="inline-flex items-center gap-1.5">
+                    <Linkedin className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                    LinkedIn
+                  </motion.span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/milton-ngala"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                >
+                  <motion.span whileHover={{ x: 4 }} className="inline-flex items-center gap-1.5">
+                    <FileText className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                    GitHub
+                  </motion.span>
+                </a>
+              </li>
             </motion.ul>
           </div>
 
@@ -168,13 +224,10 @@ const Footer = () => {
                 <Phone className="w-4 h-4 shrink-0" />
                 +254 741 760 092
               </a>
-              <a
-                href="mailto:milton@ngala.co.ke"
-                className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-              >
-                <Mail className="w-4 h-4 shrink-0" />
-                milton@ngala.co.ke
-              </a>
+              <EmailLink className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                <Mail className="w-4 h-4 shrink-0" aria-hidden="true" />
+                <span>milton<span aria-hidden="true"> </span>[@]<span aria-hidden="true"> </span>ngala.co.ke</span>
+              </EmailLink>
               <p className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <MapPin className="w-4 h-4 shrink-0" />
                 Nairobi, Kenya

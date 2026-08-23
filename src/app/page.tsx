@@ -84,11 +84,12 @@ const Home = () => {
           <motion.div className="mb-6 flex justify-center" {...fadeUp(0.2)}>
             <Image
               src={ngala}
-              alt="Milton Ngala"
+              alt="Milton Ngala — Senior Software Engineer"
               width={110}
               height={110}
               className="rounded-full ring-4 ring-primary-200 dark:ring-primary-800/60 shadow-card-lg"
               priority
+              sizes="110px"
             />
           </motion.div>
 
@@ -330,6 +331,33 @@ const Home = () => {
       </section>
 
       {/* ── Below-fold ────────────────────────────────────────────────── */}
+      {/*
+        Crawlable technology summary — rendered as static HTML for search
+        engines and AI crawlers. Visually hidden from sighted users since the
+        same information is presented interactively in TechTags and the /tech
+        accordion page. sr-only removes it from visual layout but keeps it in
+        the accessibility tree and in the HTML source.
+      */}
+      <section aria-label="Technology expertise summary" className="sr-only">
+        <h2>Technical Skills — Milton Ngala, Senior Software Engineer</h2>
+        <p>
+          Milton Ngala is a Senior Software Engineer with deep expertise across enterprise backend
+          and full-stack web development. His core technical skills include:
+        </p>
+        <ul>
+          <li>Backend: .NET Core, C#, ASP.NET Core Web API, Entity Framework, Clean Architecture, Domain-Driven Design (DDD), CQRS</li>
+          <li>Frontend: React, Next.js (App Router, SSR, ISR), TypeScript, Tailwind CSS, Framer Motion</li>
+          <li>Databases: SQL Server, PostgreSQL, Redis, MongoDB</li>
+          <li>Cloud &amp; DevOps: Azure (App Service, Functions, Storage, Azure SQL), Docker, GitHub Actions, CI/CD pipelines</li>
+          <li>Architecture: Microservices, REST APIs, distributed systems, scalability planning, security by design</li>
+          <li>Integrations: Stripe, M-Pesa, SignalR, WebSockets, third-party API integration</li>
+          <li>Leadership: Technical leadership, code reviews, engineering mentorship, agile delivery</li>
+        </ul>
+        <p>
+          He holds Microsoft certification in Azure Solutions Architecture and has experience shipping
+          production systems in travel, health technology, interior design, and web application domains.
+        </p>
+      </section>
       <WorkSection />
       <ValueProposition />
       <About />

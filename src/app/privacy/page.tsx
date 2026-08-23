@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description: 'Privacy Policy for miltonngala.com',
+  description: 'Privacy Policy for ngala.co.ke — how contact data is collected, used, and protected.',
+  alternates: { canonical: 'https://ngala.co.ke/privacy' },
 };
 
 const PrivacyPolicyPage = () => {

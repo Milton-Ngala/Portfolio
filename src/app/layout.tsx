@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/contexts/ThemeContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FloatingActionButton from '@/components/FloatingActionButton';
+import StructuredData from '@/components/StructuredData';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -27,22 +28,33 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://ngala.co.ke'),
   title: {
-    default: 'Milton Ngala',
+    // ~52 characters — within the 50-60 target
+    default: 'Milton Ngala | Senior Software Engineer',
     template: '%s | Milton Ngala',
   },
   description:
-    'Senior Software Engineer specialising in full-stack web applications, cloud architecture, and scalable systems. Based in Nairobi, working with clients globally.',
+    'Senior Software Engineer specialising in .NET, C#, React, and Next.js. Building scalable enterprise systems and full-stack applications. Based in Nairobi, working with clients globally.',
   keywords: [
-    'Software Engineer',
+    'Senior Software Engineer',
     'Full Stack Developer',
-    'Next.js',
     '.NET',
+    'C#',
+    'React',
+    'Next.js',
+    'TypeScript',
     'Azure',
+    'cloud architecture',
+    'microservices',
+    'REST APIs',
     'Nairobi',
     'Kenya',
   ],
   authors: [{ name: 'Milton Ngala', url: 'https://ngala.co.ke' }],
   creator: 'Milton Ngala',
+  // Canonical is set per-page via alternates.canonical; this provides the base
+  alternates: {
+    canonical: 'https://ngala.co.ke',
+  },
   icons: {
     icon: '/Ngala_Logo.png',
     shortcut: '/Ngala_Logo.png',
@@ -53,9 +65,9 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://ngala.co.ke',
     siteName: 'Milton Ngala',
-    title: 'Milton Ngala - Software Engineer',
+    title: 'Milton Ngala | Senior Software Engineer',
     description:
-      'Senior Software Engineer specialising in full-stack web applications, cloud architecture, and scalable systems.',
+      'Senior Software Engineer specialising in .NET, C#, React, and Next.js. Building scalable enterprise systems and full-stack applications from Nairobi.',
     images: [
       {
         url: '/og-image.png',
@@ -67,9 +79,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Milton Ngala — Senior Software Engineer',
+    title: 'Milton Ngala | Senior Software Engineer',
     description:
-      'Senior Software Engineer specialising in full-stack web applications, cloud architecture, and scalable systems.',
+      'Senior Software Engineer specialising in .NET, C#, React, and Next.js. Building scalable enterprise systems and full-stack applications.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -87,8 +99,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       suppressHydrationWarning
     >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/*
+          next/font/google handles font loading automatically — no manual preconnect
+          needed for fonts.googleapis.com. These tags were redundant and removed to
+          avoid unnecessary DNS lookups on mobile.
+        */}
       </head>
       <body
         suppressHydrationWarning
@@ -100,6 +115,8 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <Footer />
           <FloatingActionButton />
         </ThemeProvider>
+        {/* JSON-LD structured data — injected once at root, not per-page */}
+        <StructuredData />
       </body>
     </html>
   );

@@ -2,8 +2,14 @@ import type { Metadata } from 'next';
 import AboutContent from '@/components/About';
 
 export const metadata: Metadata = {
-  title: 'About | Milton Ngala',
-  description: 'Software Engineer based in Nairobi, building digital solutions that make a real difference.',
+  // Use a bare string so the template ('%s | Milton Ngala') produces
+  // "About Milton Ngala | Milton Ngala" — previously it was double-suffixed.
+  title: 'About Milton Ngala',
+  description:
+    'Senior Software Engineer based in Nairobi with expertise in .NET, C#, React, and Azure. Learn about my background, approach, and technical experience.',
+  alternates: {
+    canonical: 'https://ngala.co.ke/about',
+  },
 };
 
 const AboutPage = () => (
