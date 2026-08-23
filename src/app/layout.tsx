@@ -25,9 +25,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://miltonngala.com'),
+  metadataBase: new URL('https://ngala.co.ke'),
   title: {
-    default: 'Milton Ngala — Senior Software Engineer',
+    default: 'Milton Ngala',
     template: '%s | Milton Ngala',
   },
   description:
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     'Nairobi',
     'Kenya',
   ],
-  authors: [{ name: 'Milton Ngala', url: 'https://miltonngala.com' }],
+  authors: [{ name: 'Milton Ngala', url: 'https://ngala.co.ke' }],
   creator: 'Milton Ngala',
   icons: {
     icon: '/Ngala_Logo.png',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://miltonngala.com',
+    url: 'https://ngala.co.ke',
     siteName: 'Milton Ngala',
     title: 'Milton Ngala — Senior Software Engineer',
     description:
