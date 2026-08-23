@@ -10,7 +10,7 @@ import { navItems } from '@/constants/navItems';
 const socialLinks = [
   { icon: GithubOutlined, href: 'https://github.com/milton-ngala', label: 'GitHub' },
   { icon: Linkedin, href: 'https://linkedin.com/in/milton-antony-ngala', label: 'LinkedIn' },
-  { icon: Mail, href: 'mailto:milton.antony.ngala@gmail.com', label: 'Email' },
+  { icon: Mail, href: 'mailto:milton@ngala.co.ke', label: 'Email' },
   { icon: WhatsAppOutlined, href: 'https://wa.me/254741760092', label: 'WhatsApp' },
 ];
 
@@ -160,11 +160,11 @@ const Footer = () => {
                 +254 741 760 092
               </a>
               <a
-                href="mailto:milton.antony.ngala@gmail.com"
+                href="mailto:milton@ngala.co.ke"
                 className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
               >
                 <Mail className="w-4 h-4 shrink-0" />
-                milton.antony.ngala@gmail.com
+                milton@ngala.co.ke
               </a>
               <p className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <MapPin className="w-4 h-4 shrink-0" />

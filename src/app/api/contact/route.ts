@@ -5,7 +5,13 @@ import HTTP_STATUS from '@/constants/httpStatus';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const POST = async (req: Request) => {
-  const { name, email, phone, message, projectType } = await req.json();
+  const { name, email, phone, message, collaborationType, projectType } = await req.json();
+
+  // collaborationType is the new field; projectType kept for backwards compatibility
+  const inquiryLabel =
+    (collaborationType as string | undefined) ??
+    (projectType as string | undefined) ??
+    'General';
 
   const origin = req.headers.get('origin');
   const allowedOrigin = process.env.NEXT_PUBLIC_APP_URL;
@@ -18,24 +24,24 @@ const POST = async (req: Request) => {
   // }
 
   try {
-    // 1️⃣ Send email to you (site owner)
+    // Send notification email to site owner
     await resend.emails.send({
       from: `${name}<onboarding@resend.dev>`,
-      to: ['milton.antony.ngala@gmail.com'],
+      to: ['milton@ngala.co.ke'],
       replyTo: email,
-      subject: `${projectType} Inquiry`,
+      subject: `${inquiryLabel} Inquiry`,
       html: `
-        <h2>${projectType} Project Inquiry</h2>
+        <h2>${inquiryLabel} Inquiry</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Project Type:</strong> ${projectType}</p>
+        <p><strong>Collaboration Type:</strong> ${inquiryLabel}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `,
     });
 
-    // 2️⃣ Send confirmation email to client
+    // Send confirmation email to the enquirer
     await resend.emails.send({
       from: 'Milton Ngala <onboarding@resend.dev>',
       to: [email],
@@ -43,14 +49,13 @@ const POST = async (req: Request) => {
       html: `
         <p>Hi ${name},</p>
 
-        <p>Thank you for reaching out regarding your <strong>${projectType}</strong> project.</p>
+        <p>Thank you for reaching out regarding <strong>${inquiryLabel}</strong>.</p>
 
-        <p>I’ve received your message and will review it shortly. I’ll get back to you as soon as possible.</p>
+        <p>I've received your message and will review it shortly. I'll get back to you as soon as possible.</p>
 
         <p>Best regards,<br />
-
         <strong>Milton Ngala</strong><br />
-        Software Engineer</p><br />
+        Software Engineer</p>
       `,
     });
 
