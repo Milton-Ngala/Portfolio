@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ExternalLink, ChevronDown, Github } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
 import projects from '@/data/projects';
 import LivePreview from '@/components/common/LivePreview';
@@ -38,7 +39,21 @@ const WorkSection = () => {
             >
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="lg:border-r border-gray-100 dark:border-gray-700">
-                  <LivePreview url={project.link} />
+                  {project.thumbnail ? (
+                    /* Screenshot thumbnail — shown when a path has been supplied */
+                    <div className="relative w-full aspect-video overflow-hidden bg-gray-100 dark:bg-gray-800">
+                      <Image
+                        src={project.thumbnail}
+                        alt={`${project.title} screenshot`}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                    </div>
+                  ) : (
+                    /* Fallback: live iframe preview */
+                    <LivePreview url={project.link} />
+                  )}
                 </div>
                 <div className="p-7 flex flex-col justify-between">
                   <div>
