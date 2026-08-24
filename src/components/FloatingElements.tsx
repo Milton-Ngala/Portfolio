@@ -1,49 +1,77 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { Code, Database, Server, Zap } from 'lucide-react';
+
+/**
+ * Ambient gradient orbs — replaces the original tiny icon elements.
+ * These are large, blurred colour blobs positioned behind the hero content
+ * to give it depth and a modern "glow" aesthetic.
+ */
+const orbs = [
+  {
+    // Top-left — teal primary
+    className:
+      'absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-primary-400/20 dark:bg-primary-500/10 blur-3xl',
+    delay: 0,
+    floatY: [0, -18, 0],
+  },
+  {
+    // Top-right — amber accent
+    className:
+      'absolute -top-16 right-0 w-[420px] h-[420px] rounded-full bg-accent-400/15 dark:bg-accent-500/8 blur-3xl',
+    delay: 1,
+    floatY: [0, 14, 0],
+  },
+  {
+    // Bottom-centre — teal secondary
+    className:
+      'absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-primary-300/15 dark:bg-primary-600/8 blur-3xl',
+    delay: 1.8,
+    floatY: [0, -10, 0],
+  },
+  {
+    // Bottom-right — accent warm
+    className:
+      'absolute bottom-16 -right-24 w-[360px] h-[360px] rounded-full bg-accent-300/10 dark:bg-accent-500/6 blur-3xl',
+    delay: 2.5,
+    floatY: [0, 12, 0],
+  },
+];
 
 const FloatingElements = () => {
   const shouldReduceMotion = useReducedMotion();
 
-  const elements = [
-    { Icon: Code,     delay: 0,   x: '10%', y: '20%' },
-    { Icon: Database, delay: 0.5, x: '80%', y: '30%' },
-    { Icon: Server,   delay: 1,   x: '15%', y: '70%' },
-    { Icon: Zap,      delay: 1.5, x: '85%', y: '80%' },
-  ];
-
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {elements.map(({ Icon, delay, x, y }, index) => (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      {orbs.map(({ className, delay, floatY }, i) => (
         <motion.div
-          key={index}
-          className="absolute"
-          style={{ left: x, top: y }}
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 0.1, scale: 1 }}
-          transition={{ duration: 1, delay }}
-        >
-          {/*
-            When reduced motion is preferred, render the icon stationary at its
-            end-state (opacity visible, no movement). Otherwise run the normal
-            float + rotate loop.
-          */}
-          {shouldReduceMotion ? (
-            <Icon size={36} className="text-primary-400 dark:text-primary-600" />
-          ) : (
-            <motion.div
-              animate={{ y: [0, -20, 0], rotate: [0, 5, -5, 0] }}
-              transition={{
-                duration: 4 + index,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            >
-              <Icon size={36} className="text-primary-400 dark:text-primary-600" />
-            </motion.div>
-          )}
-        </motion.div>
+          key={i}
+          className={className}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={
+            shouldReduceMotion
+              ? { opacity: 1, scale: 1 }
+              : {
+                  opacity: 1,
+                  scale: 1,
+                  y: floatY,
+                }
+          }
+          transition={
+            shouldReduceMotion
+              ? { duration: 0.4, delay }
+              : {
+                  opacity: { duration: 1.2, delay },
+                  scale: { duration: 1.2, delay },
+                  y: {
+                    duration: 6 + i * 1.2,
+                    delay,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  },
+                }
+          }
+        />
       ))}
     </div>
   );

@@ -6,14 +6,14 @@ import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, Calendar, Send, ExternalLink, Clock, CheckCircle } from 'lucide-react';
 import { WhatsAppOutlined, CoffeeOutlined } from '@ant-design/icons';
 
-/** Collaboration type options for the tiered intake dropdown */
+/** Collaboration type options for the tiered intake pill selector */
 const COLLABORATION_OPTIONS = [
-  'Corporate / Enterprise Consulting',
-  'Freelance Project / MVP',
-  'Other',
+  { value: 'Corporate / Enterprise Consulting', label: 'Enterprise', icon: '🏢' },
+  { value: 'Freelance Project / MVP', label: 'Startup / Freelance', icon: '🚀' },
+  { value: 'Other', label: 'Other', icon: '💬' },
 ] as const;
 
-type CollaborationType = typeof COLLABORATION_OPTIONS[number];
+type CollaborationType = typeof COLLABORATION_OPTIONS[number]['value'];
 
 type FormData = {
   name: string;
@@ -33,7 +33,7 @@ const Contact = () => {
     email: '',
     phone: '',
     message: '',
-    collaborationType: COLLABORATION_OPTIONS[0],
+    collaborationType: COLLABORATION_OPTIONS[0].value,
   };
 
   const [formData, setFormData] = useState<FormData>(initialForm);
@@ -220,43 +220,69 @@ const Contact = () => {
           >
             <h2 className="text-h3 mb-6">Start a project</h2>
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+              {/* Collaboration type — visual pill selector */}
               <div>
-                <label htmlFor="collaborationType" className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1.5">
+                <p className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-2">
                   How can we collaborate?
-                </label>
-                <select
-                  id="collaborationType"
-                  name="collaborationType"
-                  value={formData.collaborationType}
-                  onChange={handleInputChange}
-                  className="input"
-                  aria-label="Collaboration type"
-                >
-                  {COLLABORATION_OPTIONS.map((opt) => (
-                    <option key={opt} value={opt}>{opt}</option>
-                  ))}
-                </select>
+                </p>
+                <div className="flex flex-wrap gap-2" role="group" aria-label="Collaboration type">
+                  {COLLABORATION_OPTIONS.map((opt) => {
+                    const isSelected = formData.collaborationType === opt.value;
+                    return (
+                      <button
+                        key={opt.value}
+                        type="button"
+                        onClick={() =>
+                          setFormData((prev) => ({ ...prev, collaborationType: opt.value }))
+                        }
+                        aria-pressed={isSelected}
+                        className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 ${
+                          isSelected
+                            ? 'bg-primary-600 text-white border-primary-600 shadow-card'
+                            : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-gray-700 hover:border-primary-400 dark:hover:border-primary-600 hover:text-primary-700 dark:hover:text-primary-400'
+                        }`}
+                      >
+                        <span aria-hidden="true">{opt.icon}</span>
+                        {opt.label}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
               <div>
-                <input name="name" placeholder="Your name" value={formData.name} onChange={handleInputChange} className="input" aria-label="Your name" />
+                <label htmlFor="contact-name" className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1.5">
+                  Your name <span aria-hidden="true" className="text-red-400">*</span>
+                </label>
+                <input id="contact-name" name="name" placeholder="Jane Smith" value={formData.name} onChange={handleInputChange} className="input" aria-required="true" />
                 {errors.name && <p className="mt-1 text-xs text-red-500" role="alert">{errors.name}</p>}
               </div>
               <div>
-                <input name="email" type="email" placeholder="Email address" value={formData.email} onChange={handleInputChange} className="input" aria-label="Email address" />
+                <label htmlFor="contact-email" className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1.5">
+                  Email address <span aria-hidden="true" className="text-red-400">*</span>
+                </label>
+                <input id="contact-email" name="email" type="email" placeholder="jane@company.com" value={formData.email} onChange={handleInputChange} className="input" aria-required="true" />
                 {errors.email && <p className="mt-1 text-xs text-red-500" role="alert">{errors.email}</p>}
               </div>
               <div>
-                <input name="phone" type="tel" placeholder="Phone number" value={formData.phone} onChange={handleInputChange} className="input" aria-label="Phone number" />
+                <label htmlFor="contact-phone" className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1.5">
+                  Phone number <span aria-hidden="true" className="text-red-400">*</span>
+                </label>
+                <input id="contact-phone" name="phone" type="tel" placeholder="+254 700 000 000" value={formData.phone} onChange={handleInputChange} className="input" aria-required="true" />
                 {errors.phone && <p className="mt-1 text-xs text-red-500" role="alert">{errors.phone}</p>}
               </div>
               <div>
+                <label htmlFor="contact-message" className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1.5">
+                  Project details <span aria-hidden="true" className="text-red-400">*</span>
+                </label>
                 <textarea
+                  id="contact-message"
                   name="message"
                   rows={4}
                   placeholder="Tell me about your project goals, timeline, and constraints."
                   value={formData.message}
                   onChange={handleInputChange}
                   className="input resize-none"
+                  aria-required="true"
                 />
                 {errors.message && <p className="mt-1 text-xs text-red-500" role="alert">{errors.message}</p>}
               </div>

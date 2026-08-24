@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, MessageCircle } from 'lucide-react';
 import useTheme from '@/contexts/ThemeContext';
 import { navItems } from '@/constants/navItems';
 
@@ -100,6 +100,19 @@ const Header = () => {
               </motion.span>
             </AnimatePresence>
           </motion.button>
+
+          <div className="w-px h-5 bg-gray-200 dark:bg-gray-700 mx-1" />
+
+          {/* Primary CTA — always visible in desktop nav */}
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary-600 text-white text-sm font-heading font-semibold hover:bg-primary-700 transition-colors duration-200 shadow-card"
+            >
+              <MessageCircle size={15} aria-hidden="true" />
+              Let&apos;s Talk
+            </Link>
+          </motion.div>
         </div>
 
         {/* Mobile controls */}
@@ -166,6 +179,22 @@ const Header = () => {
                   </Link>
                 </motion.div>
               ))}
+
+              {/* Mobile contact CTA */}
+              <motion.div
+                className="pt-3 mt-2 border-t border-gray-100 dark:border-gray-800"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.2, delay: navItems.length * 0.05 + 0.05 }}
+              >
+                <Link
+                  href="/contact"
+                  className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-lg bg-primary-600 text-white text-sm font-heading font-semibold hover:bg-primary-700 transition-colors duration-200"
+                >
+                  <MessageCircle size={16} aria-hidden="true" />
+                  Get in Touch
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}

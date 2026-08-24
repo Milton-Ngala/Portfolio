@@ -13,6 +13,16 @@ const WorkSection = () => {
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
 
+  /** Map each project industry to a top-border accent color */
+  const industryAccent: Record<string, string> = {
+    'Travel & Hospitality': 'border-t-4 border-t-accent-400 dark:border-t-accent-500',
+    'Health Technology':    'border-t-4 border-t-green-400 dark:border-t-green-500',
+    'GIS & Research':       'border-t-4 border-t-blue-400 dark:border-t-blue-500',
+    'Interior Design':      'border-t-4 border-t-pink-400 dark:border-t-pink-500',
+    'Web Application':      'border-t-4 border-t-primary-400 dark:border-t-primary-500',
+  };
+  const defaultAccent = 'border-t-4 border-t-primary-400 dark:border-t-primary-500';
+
   return (
     <section className="py-24 bg-white dark:bg-gray-900">
       <div className="container-wide mx-auto px-6">
@@ -31,7 +41,9 @@ const WorkSection = () => {
           {projects.map((project, i) => (
             <motion.article
               key={project.id}
-              className="card-elevated overflow-hidden"
+              className={`card-elevated overflow-hidden ${
+                industryAccent[project.industry] ?? defaultAccent
+              }`}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}

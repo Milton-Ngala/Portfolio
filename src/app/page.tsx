@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, Calendar, ChevronDown, Building2, Rocket, CheckCircle } from 'lucide-react';
+import { ArrowRight, Calendar, ChevronDown, Building2, Rocket, CheckCircle, MessageCircle } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import FloatingElements from '@/components/FloatingElements';
@@ -72,30 +72,38 @@ const Home = () => {
         <FloatingElements />
 
         <div className="relative z-10 container-content mx-auto px-6 text-center pt-24 pb-16">
+
+          {/* Avatar — leads the section for immediate trust/recognition */}
+          <motion.div className="mb-5 flex justify-center" {...fadeUp(0.1)}>
+            <div className="relative">
+              <Image
+                src={ngala}
+                alt="Milton Ngala — Senior Software Engineer"
+                width={160}
+                height={160}
+                className="rounded-full ring-4 ring-primary-300/60 dark:ring-primary-700/60 shadow-card-lg"
+                priority
+                sizes="160px"
+              />
+              {/* Subtle glow pulse ring */}
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 rounded-full ring-4 ring-primary-400/20 dark:ring-primary-500/20 animate-pulse"
+              />
+            </div>
+          </motion.div>
+
           {/* Status badge */}
-          <motion.div className="mb-6" {...fadeUp(0.1)}>
-            <span className="inline-flex items-center gap-2 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400 px-4 py-1.5 rounded-full text-sm font-medium border border-primary-200 dark:border-primary-800/60">
+          <motion.div className="mb-3" {...fadeUp(0.2)}>
+            <span className="inline-flex items-center gap-2 bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 px-4 py-1.5 rounded-full text-sm font-medium border border-primary-200 dark:border-primary-800/60">
               <span className={pulseDotClass} />
               Available for new projects
             </span>
           </motion.div>
 
-          {/* Avatar */}
-          <motion.div className="mb-6 flex justify-center" {...fadeUp(0.2)}>
-            <Image
-              src={ngala}
-              alt="Milton Ngala — Senior Software Engineer"
-              width={110}
-              height={110}
-              className="rounded-full ring-4 ring-primary-200 dark:ring-primary-800/60 shadow-card-lg"
-              priority
-              sizes="110px"
-            />
-          </motion.div>
-
           {/* Name */}
           <motion.p
-            className="text-lg font-heading font-semibold text-gray-500 dark:text-gray-400 mb-2 tracking-wide"
+            className="text-lg font-heading font-semibold text-gray-500 dark:text-gray-400 mb-3 tracking-wide"
             {...fadeUp(0.25)}
           >
             Milton Ngala
@@ -113,7 +121,7 @@ const Home = () => {
 
           {/* Sub-headline */}
           <motion.p
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed"
             {...fadeUp(0.4)}
           >
             Designing resilient{' '}
@@ -122,6 +130,21 @@ const Home = () => {
             </span>{' '}
             for enterprise scale, and building performant full-stack applications for rapid market entry.
           </motion.p>
+
+          {/* Primary CTAs */}
+          <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10"
+            {...fadeUp(0.45)}
+          >
+            <Link href="/contact" className="btn-primary text-base px-8 py-3.5">
+              <MessageCircle size={18} aria-hidden="true" />
+              Let&apos;s Work Together
+            </Link>
+            <Link href="/work" className="btn-ghost text-base px-8 py-3.5">
+              See My Work
+              <ArrowRight size={18} aria-hidden="true" />
+            </Link>
+          </motion.div>
 
           {/* Dual-audience cards */}
           <motion.div
@@ -145,9 +168,10 @@ const Home = () => {
                   <p className={`text-xs font-mono font-semibold uppercase tracking-wider mb-0.5 ${card.iconColor}`}>
                     {card.audience}
                   </p>
-                  <h2 className="text-base font-heading font-bold text-gray-900 dark:text-gray-50">
+                  {/* h3: audience cards are sub-sections under the h1 hero */}
+                  <h3 className="text-base font-heading font-bold text-gray-900 dark:text-gray-50">
                     {card.title}
-                  </h2>
+                  </h3>
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-1">
                   {card.description}
@@ -167,9 +191,9 @@ const Home = () => {
             <TechTags />
           </motion.div>
 
-          {/* Secondary links */}
+          {/* Book a call link */}
           <motion.div
-            className="flex items-center justify-center gap-6 mt-8"
+            className="flex items-center justify-center gap-6 mt-6"
             {...fadeUp(0.85)}
           >
             <motion.button
@@ -177,13 +201,13 @@ const Home = () => {
               className="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
             >
               <Calendar size={14} />
-              Book a call
+              Or book a free 30-min call
             </motion.button>
           </motion.div>
 
           {/* Scroll cue */}
           <motion.div
-            className="mt-14 flex justify-center text-gray-400 dark:text-gray-600"
+            className="mt-12 flex justify-center text-gray-400 dark:text-gray-600"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.8 }}
