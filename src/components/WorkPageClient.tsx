@@ -106,7 +106,7 @@ const WorkPageClient = () => {
                         transition={{ duration: 0.2 }}
                         aria-hidden="true"
                       >
-                        <ChevronDown size={15} />
+                        <ChevronDown size={16} />
                       </motion.span>
                     </motion.button>
                     <Link

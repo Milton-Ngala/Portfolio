@@ -109,7 +109,7 @@ const ClientServices = () => {
               whileHover={{ y: -10 }}
             >
               <div className="bg-primary-500 rounded-xl w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-primary-600 transition-colors duration-300">
-                <service.icon className="w-8 h-8 text-white" />
+                <service.icon className="w-6 h-6 text-white" />
               </div>
 
               <h3 className="text-2xl font-heading font-bold text-gray-900 mb-4">
@@ -170,7 +170,7 @@ const ClientServices = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 <div className="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <industry.icon className="w-8 h-8 text-primary-600" />
+                  <industry.icon className="w-6 h-6 text-primary-600" />
                 </div>
                 <h4 className="text-lg font-heading font-bold text-gray-900 mb-2">
                   {industry.name}
@@ -199,7 +199,7 @@ const ClientServices = () => {
               whileTap={{ scale: 0.95 }}
             >
               Get a Custom Quote
-              <ArrowRight size={20} />
+              <ArrowRight size={16} />
             </motion.button>
             <p className="text-gray-600 mt-4 text-sm">
               Free consultation • Custom pricing • No long-term contracts

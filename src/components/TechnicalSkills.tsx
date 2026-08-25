@@ -181,7 +181,7 @@ const TechnicalSkills = () => {
               whileHover={{ scale: 1.05 }}
             >
               <div className="bg-primary-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-500/30 transition-colors duration-300">
-                <spec.icon className="w-8 h-8 text-primary-400" />
+                <spec.icon className="w-5 h-5 text-primary-400" />
               </div>
               <h4 className="text-lg font-heading font-semibold mb-2">
                 {spec.title}

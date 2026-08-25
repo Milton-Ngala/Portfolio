@@ -62,7 +62,7 @@ const About = () => {
                     whileHover={{ x: 3 }}
                   >
                     Let's work together
-                    <ArrowRight size={15} />
+                    <ArrowRight size={16} />
                   </motion.span>
                 </Link>
               </motion.div>

@@ -100,7 +100,7 @@ const Footer = () => {
                     window.location.href = ['mailto', ':', 'milton', '@', 'ngala.co.ke'].join('');
                   } : undefined}
                 >
-                  <s.icon className="w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-white transition-colors duration-300" />
+                  <s.icon className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-white transition-colors duration-300" />
                 </motion.a>
               ))}
             </motion.div>

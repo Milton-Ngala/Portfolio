@@ -83,7 +83,7 @@ const Work = () => {
                         animate={{ rotate: expandedId === project.id ? 180 : 0 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <ChevronDown size={15} />
+                        <ChevronDown size={16} />
                       </motion.span>
                     </motion.button>
                     <Link

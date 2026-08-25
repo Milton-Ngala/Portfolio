@@ -218,7 +218,7 @@ const SocialProof = () => {
               whileHover={{ y: -10, scale: 1.02 }}
             >
               <div className="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors duration-300">
-                <achievement.icon className="w-8 h-8 text-primary-600" />
+                <achievement.icon className="w-5 h-5 text-primary-600" />
               </div>
               <div className="text-3xl font-heading font-bold text-primary-900 mb-2">
                 {achievement.value}

@@ -226,7 +226,7 @@ const TechPageClient = () => {
               transition={{ duration: 0.6, delay: 0.8 }}
               whileHover={{ scale: 1.05 }}
             >
-              <Award className="w-8 h-8 text-primary-600 dark:text-primary-400 mx-auto mb-3" aria-hidden="true" />
+              <Award className="w-5 h-5 text-primary-600 dark:text-primary-400 mx-auto mb-3" aria-hidden="true" />
               <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">
                 Technical Leadership
               </h3>
@@ -242,7 +242,7 @@ const TechPageClient = () => {
               transition={{ duration: 0.6, delay: 1.0 }}
               whileHover={{ scale: 1.05 }}
             >
-              <MapPin className="w-8 h-8 text-primary-600 dark:text-primary-400 mx-auto mb-3" aria-hidden="true" />
+              <MapPin className="w-5 h-5 text-primary-600 dark:text-primary-400 mx-auto mb-3" aria-hidden="true" />
               <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">
                 System Architecture
               </h3>
@@ -258,7 +258,7 @@ const TechPageClient = () => {
               transition={{ duration: 0.6, delay: 1.2 }}
               whileHover={{ scale: 1.05 }}
             >
-              <Mail className="w-8 h-8 text-primary-600 dark:text-primary-400 mx-auto mb-3" aria-hidden="true" />
+              <Mail className="w-5 h-5 text-primary-600 dark:text-primary-400 mx-auto mb-3" aria-hidden="true" />
               <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">
                 Mentorship &amp; Code Quality
               </h3>

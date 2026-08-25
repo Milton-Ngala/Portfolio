@@ -109,7 +109,7 @@ const Header = () => {
               href="/contact"
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary-600 text-white text-sm font-heading font-semibold hover:bg-primary-700 transition-colors duration-200 shadow-card"
             >
-              <MessageCircle size={15} aria-hidden="true" />
+              <MessageCircle size={16} aria-hidden="true" />
               Let&apos;s Talk
             </Link>
           </motion.div>

@@ -182,7 +182,10 @@ const Contact = () => {
                       <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
                         m.primary ? 'bg-white/20' : 'bg-primary-50 dark:bg-primary-900/20'
                       }`}>
-                        <m.icon className={`w-4.5 h-4.5 ${m.primary ? 'text-white' : 'text-primary-600 dark:text-primary-400'}`} />
+                        <m.icon
+                          className={`w-5 h-5 ${m.primary ? 'text-white' : 'text-primary-600 dark:text-primary-400'}`}
+                          style={{ fontSize: 20 }}
+                        />
                       </div>
                       <div>
                         <p className={`text-sm font-semibold ${m.primary ? 'text-white' : 'text-gray-900 dark:text-gray-100'}`}>
@@ -203,7 +206,7 @@ const Contact = () => {
             </div>
 
             <div className="mt-6 card p-5 flex gap-3">
-              <CoffeeOutlined className="text-primary-500 mt-0.5 shrink-0" />
+              <CoffeeOutlined className="text-primary-500 mt-0.5 shrink-0" style={{ fontSize: 16 }} />
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 I usually respond within a few hours during business days (GMT+3).
                 Happy to discuss ideas over a virtual coffee.

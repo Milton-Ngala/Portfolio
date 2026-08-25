@@ -67,8 +67,10 @@ const Home = () => {
       <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-gray-50 dark:bg-gray-950">
         {/* Dot grid — uses .bg-dot-grid utility (no hardcoded hex) */}
         <div className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-20 bg-dot-grid" />
-        {/* Radial fade over the grid */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,transparent_30%,theme(colors.gray.50)_80%)] dark:bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,transparent_30%,theme(colors.gray.950)_80%)] pointer-events-none" />
+        {/* Radial fade over the grid — wider clear zone, crisper edge */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,transparent_40%,theme(colors.gray.50)_70%)] dark:bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,transparent_40%,theme(colors.gray.950)_70%)] pointer-events-none" />
+        {/* Soft bottom fade to blend hero into the next section */}
+        <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-b from-primary-50/0 via-transparent to-primary-50/60 dark:from-gray-950/0 dark:via-transparent dark:to-gray-950 pointer-events-none" />
         <FloatingElements />
 
         <div className="relative z-10 container-content mx-auto px-6 text-center pt-24 pb-16">
@@ -142,7 +144,7 @@ const Home = () => {
             </Link>
             <Link href="/work" className="btn-ghost text-base px-8 py-3.5">
               See My Work
-              <ArrowRight size={18} aria-hidden="true" />
+              <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </motion.div>
 
@@ -213,7 +215,7 @@ const Home = () => {
             transition={{ delay: 1.2, duration: 0.8 }}
           >
             <motion.div {...scrollCueAnimation}>
-              <ChevronDown size={22} />
+              <ChevronDown size={20} />
             </motion.div>
           </motion.div>
         </div>
