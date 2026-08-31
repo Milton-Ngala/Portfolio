@@ -226,7 +226,7 @@ const Footer = () => {
               </a>
               <EmailLink className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
                 <Mail className="w-4 h-4 shrink-0" aria-hidden="true" />
-                <span>milton<span aria-hidden="true"> </span>[@]<span aria-hidden="true"> </span>ngala.co.ke</span>
+                <span>milton<span aria-hidden="true"></span>@ngala.co.ke</span>
               </EmailLink>
               <p className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <MapPin className="w-4 h-4 shrink-0" />
