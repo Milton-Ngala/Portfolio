@@ -198,7 +198,7 @@ const Home = () => {
       {/* ── Enterprise Consulting ──────────────────────────────────────── */}
       <section
         id="consulting"
-        className="section bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800"
+        className="section bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-950"
       >
         <div className="container-content mx-auto">
           <motion.div
