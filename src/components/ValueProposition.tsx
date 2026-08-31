@@ -43,7 +43,7 @@ const ValueProposition = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 });
 
   return (
-    <section className="py-24 bg-white dark:bg-gray-900 border-y border-gray-100 dark:border-gray-800">
+    <section className="py-24 bg-white dark:bg-black border-y border-gray-100 dark:border-gray-800">
       <div className="container-wide mx-auto px-6">
         {/* Heading */}
         <motion.div

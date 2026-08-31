@@ -26,7 +26,7 @@ const About = () => {
   });
 
   return (
-    <section id="about" className="py-24 bg-gray-50 dark:bg-gray-950">
+    <section id="about" className="py-24 bg-gray-50 dark:bg-black">
       <div className="container-wide mx-auto px-6">
         <motion.div
           ref={ref}

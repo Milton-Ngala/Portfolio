@@ -13,7 +13,7 @@ const Work = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
 
   return (
-    <section className="py-24 bg-white dark:bg-gray-900">
+    <section className="py-24 bg-white dark:bg-black">
       <div className="container-wide mx-auto px-6">
         <motion.div
           ref={ref}
