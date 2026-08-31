@@ -182,7 +182,7 @@ const Home = () => {
                   </h2>
                 </div>
 
-                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-1">
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed text-justify flex-1">
                   {card.description}
                 </p>
 
@@ -261,7 +261,7 @@ const Home = () => {
 
             <h2>Enterprise Architecture &amp; Consulting</h2>
 
-            <p>
+            <p className="text-justify">
               I work with engineering teams and decision-makers to design
               systems that scale. Whether you&apos;re modernising a legacy
               codebase, migrating to the cloud, or decomposing a monolith into
@@ -311,7 +311,7 @@ const Home = () => {
                   </p>
                 </div>
 
-                <p className="text-xs text-gray-500 dark:text-gray-400 pl-5">
+                <p className="text-xs text-gray-500 dark:text-gray-400 pl-5 text-justify">
                   {item.detail}
                 </p>
               </div>
@@ -360,7 +360,7 @@ const Home = () => {
 
             <h2>Full-Stack MVPs &amp; Rapid Delivery</h2>
 
-            <p>
+            <p className="text-justify">
               Got a product idea and a deadline? I specialise in taking
               startups and indie founders from zero to a live,
               production-grade web application — fast. Performant Next.js
@@ -410,7 +410,7 @@ const Home = () => {
                   </p>
                 </div>
 
-                <p className="text-xs text-gray-500 dark:text-gray-400 pl-5">
+                <p className="text-xs text-gray-500 dark:text-gray-400 pl-5 text-justify">
                   {item.detail}
                 </p>
               </div>
@@ -445,7 +445,7 @@ const Home = () => {
       >
         <h2>Technical Skills — Milton Ngala, Senior Software Engineer</h2>
 
-        <p>
+        <p className="text-justify">
           Milton Ngala is a Senior Software Engineer with deep expertise
           across enterprise backend and full-stack web development. His core
           technical skills include:
@@ -487,7 +487,7 @@ const Home = () => {
           </li>
         </ul>
 
-        <p>
+        <p className="text-justify">
           He holds Microsoft certification in Azure Solutions Architecture and
           has experience shipping production systems in travel, health
           technology, interior design, and web application domains.
