@@ -1,14 +1,16 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Code, Database, Server, Zap } from 'lucide-react';
 
 const FloatingElements = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   const elements = [
-    { Icon: Code, delay: 0, x: '10%', y: '20%' },
+    { Icon: Code,     delay: 0,   x: '10%', y: '20%' },
     { Icon: Database, delay: 0.5, x: '80%', y: '30%' },
-    { Icon: Server, delay: 1, x: '15%', y: '70%' },
-    { Icon: Zap, delay: 1.5, x: '85%', y: '80%' },
+    { Icon: Server,   delay: 1,   x: '15%', y: '70%' },
+    { Icon: Zap,      delay: 1.5, x: '85%', y: '80%' },
   ];
 
   return (
@@ -22,19 +24,25 @@ const FloatingElements = () => {
           animate={{ opacity: 0.1, scale: 1 }}
           transition={{ duration: 1, delay }}
         >
-          <motion.div
-            animate={{
-              y: [0, -20, 0],
-              rotate: [0, 5, -5, 0]
-            }}
-            transition={{
-              duration: 4 + index,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-          <Icon size={36} className="text-primary-400 dark:text-primary-600" />
-          </motion.div>
+          {/*
+            When reduced motion is preferred, render the icon stationary at its
+            end-state (opacity visible, no movement). Otherwise run the normal
+            float + rotate loop.
+          */}
+          {shouldReduceMotion ? (
+            <Icon size={36} className="text-primary-400 dark:text-primary-600" />
+          ) : (
+            <motion.div
+              animate={{ y: [0, -20, 0], rotate: [0, 5, -5, 0] }}
+              transition={{
+                duration: 4 + index,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            >
+              <Icon size={36} className="text-primary-400 dark:text-primary-600" />
+            </motion.div>
+          )}
         </motion.div>
       ))}
     </div>

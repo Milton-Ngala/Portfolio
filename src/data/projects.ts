@@ -34,6 +34,12 @@ export type Project = {
   link: string;
   github?: string;
   metrics?: Metric[];
+  /**
+   * Optional screenshot/thumbnail for the project card.
+   * Supply a path relative to /public (e.g. '/images/projects/makio.png').
+   * When absent the card falls back to the metrics-only layout.
+   */
+  thumbnail?: string;
   /** Legacy flat fields — kept for backwards compat with Work.tsx */
   challenge?: string;
   outcome?: string[];

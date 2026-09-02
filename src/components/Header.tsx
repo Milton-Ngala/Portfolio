@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import useTheme from '@/contexts/ThemeContext';
 import { navItems } from '@/constants/navItems';
@@ -14,6 +14,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const pathname = usePathname();
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 40);
@@ -36,7 +37,9 @@ const Header = () => {
       }`}
       initial={{ y: -64, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      transition={shouldReduceMotion
+        ? { duration: 0 }
+        : { duration: 0.5, ease: 'easeOut' }}
     >
       <nav className="container-wide mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
@@ -147,7 +150,9 @@ const Header = () => {
                   key={item.href}
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.2, delay: i * 0.05 }}
+                  transition={shouldReduceMotion
+                    ? { duration: 0 }
+                    : { duration: 0.2, delay: i * 0.05 }}
                 >
                   <Link
                     href={item.href}

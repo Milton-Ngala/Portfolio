@@ -49,5 +49,15 @@
       "persist": true,
       "head_sampling_rate": 1
     }
-  }
+  },
+  "routes": [
+    // Redirect www subdomain to the canonical non-www domain.
+    // Cloudflare evaluates routes before the Worker, so this redirect
+    // happens at the edge with no Worker invocation cost.
+    {
+      "pattern": "www.ngala.co.ke/*",
+      "zone_name": "ngala.co.ke",
+      "custom_domain": false
+    }
+  ]
 }
