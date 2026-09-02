@@ -85,6 +85,16 @@ const WorkPageClient = () => {
                       </div>
                     )}
 
+                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-2">
+                      {project.problem}
+                    </p>
+                    <p className="text-sm font-semibold text-primary-700 dark:text-primary-400 mb-1">
+                      {project.impact}
+                    </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mb-5">
+                      Role: {project.role}
+                    </p>
+
                     <div className="flex flex-wrap gap-1.5 mb-5">
                       {project.tech.map((t) => (
                         <span key={t} className="tag">{t}</span>
@@ -207,15 +217,9 @@ const WorkPageClient = () => {
           transition={{ delay: 0.5 }}
         >
           <p className="text-sm text-gray-500 dark:text-gray-500 mb-4">Have a similar challenge?</p>
-          <Link href="/contact">
-            <motion.button
-              className="btn-primary"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              Let&apos;s talk about your project
-              <ArrowRight size={16} />
-            </motion.button>
+          <Link href="/contact" className="btn-primary">
+            Let&apos;s talk about your project
+            <ArrowRight size={16} aria-hidden="true" />
           </Link>
         </motion.div>
       </div>

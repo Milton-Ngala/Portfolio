@@ -51,9 +51,7 @@ const Contact = () => {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       next.email = 'Enter a valid email address.';
     }
-    if (!formData.phone.trim()) {
-      next.phone = 'Phone number is required.';
-    } else if (!/^\+?[\d\s\-()]{7,15}$/.test(formData.phone)) {
+    if (formData.phone.trim() && !/^\+?[\d\s\-()]{7,15}$/.test(formData.phone)) {
       next.phone = 'Enter a valid phone number.';
     }
     if (!formData.message.trim()) {
@@ -238,19 +236,24 @@ const Contact = () => {
                 </select>
               </div>
               <div>
-                <input name="name" placeholder="Your name" value={formData.name} onChange={handleInputChange} className="input" aria-label="Your name" />
+                <label htmlFor="name" className="sr-only">Your name</label>
+                <input id="name" name="name" placeholder="Your name" autoComplete="name" value={formData.name} onChange={handleInputChange} className="input" />
                 {errors.name && <p className="mt-1 text-xs text-red-500" role="alert">{errors.name}</p>}
               </div>
               <div>
-                <input name="email" type="email" placeholder="Email address" value={formData.email} onChange={handleInputChange} className="input" aria-label="Email address" />
+                <label htmlFor="email" className="sr-only">Email address</label>
+                <input id="email" name="email" type="email" placeholder="Email address" autoComplete="email" value={formData.email} onChange={handleInputChange} className="input" />
                 {errors.email && <p className="mt-1 text-xs text-red-500" role="alert">{errors.email}</p>}
               </div>
               <div>
-                <input name="phone" type="tel" placeholder="Phone number" value={formData.phone} onChange={handleInputChange} className="input" aria-label="Phone number" />
+                <label htmlFor="phone" className="sr-only">Phone number (optional)</label>
+                <input id="phone" name="phone" type="tel" placeholder="Phone number (optional)" autoComplete="tel" value={formData.phone} onChange={handleInputChange} className="input" />
                 {errors.phone && <p className="mt-1 text-xs text-red-500" role="alert">{errors.phone}</p>}
               </div>
               <div>
+                <label htmlFor="message" className="sr-only">Project details</label>
                 <textarea
+                  id="message"
                   name="message"
                   rows={4}
                   placeholder="Tell me about your project goals, timeline, and constraints."
@@ -273,6 +276,8 @@ const Contact = () => {
 
               {submitStatus === 'success' && (
                 <motion.div
+                  role="status"
+                  aria-live="polite"
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="flex items-center gap-3 rounded-lg border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20 p-4"
@@ -285,6 +290,7 @@ const Contact = () => {
               )}
               {submitStatus === 'error' && (
                 <motion.div
+                  role="alert"
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-4"

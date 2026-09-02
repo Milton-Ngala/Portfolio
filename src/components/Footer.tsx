@@ -233,7 +233,7 @@ const Footer = () => {
                 Nairobi, Kenya
               </p>
               <motion.button
-                onClick={() => window.open('https://wa.me/254741760092', '_blank')}
+                onClick={() => window.open('https://wa.me/254741760092', '_blank', 'noopener,noreferrer')}
                 className="mt-2 flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors duration-200"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}

@@ -6,7 +6,7 @@ import { WhatsAppOutlined } from '@ant-design/icons';
 const WhatsAppButton = () => {
   const openWhatsApp = () => {
     const message = encodeURIComponent("Hi Milton, I'd like to discuss a project with you.");
-    window.open(`https://wa.me/254741760092?text=${message}`, '_blank');
+    window.open(`https://wa.me/254741760092?text=${message}`, '_blank', 'noopener,noreferrer');
   };
 
   return (

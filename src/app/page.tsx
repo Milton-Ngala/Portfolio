@@ -24,36 +24,6 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.6, delay, ease: 'easeOut' },
 });
 
-/** Audience cards rendered below the sub-headline */
-const audienceCards = [
-  {
-    id: 'consulting',
-    icon: Building2,
-    audience: 'Corporate',
-    title: 'Enterprise Consulting',
-    description:
-      'Scalable .NET architectures, microservices, cloud migrations (AWS/Azure), and legacy system optimization.',
-    cta: 'Optimize My Systems',
-    href: '#consulting',
-    border: 'border-primary-200 dark:border-primary-800/50',
-    iconBg: 'bg-primary-50 dark:bg-primary-900/30',
-    iconColor: 'text-primary-600 dark:text-primary-400',
-  },
-  {
-    id: 'project-planner',
-    icon: Rocket,
-    audience: 'Freelance / Startup',
-    title: 'Full-Stack MVPs',
-    description:
-      'Rapid product delivery, performant Next.js applications, robust API development, and responsive frontend optimization.',
-    cta: 'Launch a Product',
-    href: '#project-planner',
-    border: 'border-accent-200 dark:border-accent-800/50',
-    iconBg: 'bg-accent-50 dark:bg-accent-900/30',
-    iconColor: 'text-accent-600 dark:text-accent-400',
-  },
-] as const;
-
 const Home = () => {
   const shouldReduceMotion = useReducedMotion();
 
@@ -124,9 +94,9 @@ const Home = () => {
             className="text-display font-heading font-bold text-gray-900 dark:text-gray-50 mb-4 text-balance"
             {...fadeUp(0.3)}
           >
-            Enterprise Architect &amp;
+            I design and ship systems
             <br />
-            <span className="text-gradient"> Full-Stack Engineer</span>
+            <span className="text-gradient">that move business forward.</span>
           </motion.h1>
 
           {/* Sub-headline */}
@@ -134,71 +104,28 @@ const Home = () => {
             className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed"
             {...fadeUp(0.4)}
           >
-            Designing resilient{' '}
+            Senior software engineering for teams that need resilient{' '}
             <span className="font-semibold text-gray-800 dark:text-gray-200">
-              cloud-native architectures
+              cloud-native architecture
             </span>{' '}
-            for enterprise scale, and building performant full-stack
-            applications for rapid market entry.
+            and performant products without unnecessary complexity.
           </motion.p>
 
-          {/* Dual-audience cards */}
+          {/* Proof-led outcomes */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-8"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-px max-w-3xl mx-auto mb-8 overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-200 dark:bg-gray-800"
             {...fadeUp(0.5)}
           >
-            {audienceCards.map((card, i) => (
-              <motion.a
-                key={card.id}
-                href={card.href}
-                className={`group relative flex flex-col gap-3 rounded-2xl border bg-gray-50 dark:bg-black p-5 md:p-6 text-left shadow-sm hover:shadow-card-md transition-all duration-300 ${card.border}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.55 + i * 0.1,
-                  ease: 'easeOut',
-                }}
-                whileHover={shouldReduceMotion ? {} : { y: -4 }}
-              >
-                <div
-                  className={`w-10 h-10 rounded-xl flex items-center justify-center ${card.iconBg}`}
-                >
-                  <card.icon
-                    className={`w-5 h-5 ${card.iconColor}`}
-                    aria-hidden="true"
-                  />
-                </div>
-
-                <div>
-                  <p
-                    className={`text-xs font-mono font-semibold uppercase tracking-wider mb-0.5 ${card.iconColor}`}
-                  >
-                    {card.audience}
-                  </p>
-
-                  <h2 className="text-base font-heading font-bold text-gray-900 dark:text-gray-50">
-                    {card.title}
-                  </h2>
-                </div>
-
-                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed text-justify flex-1">
-                  {card.description}
-                </p>
-
-                <span
-                  className={`inline-flex items-center gap-1.5 text-sm font-semibold ${card.iconColor} group-hover:gap-2.5 transition-all duration-200`}
-                >
-                  {card.cta}
-                  <ArrowRight size={14} aria-hidden="true" />
-                </span>
-              </motion.a>
+            {[
+              ['+180%', 'booking conversion'],
+              ['40%', 'shorter clinic waits'],
+              ['95+', 'Lighthouse performance'],
+            ].map(([value, label]) => (
+              <div key={label} className="bg-gray-50 dark:bg-black px-4 py-4 text-center">
+                <p className="text-xl font-heading font-bold text-gray-900 dark:text-gray-50">{value}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{label}</p>
+              </div>
             ))}
-          </motion.div>
-
-          {/* Tech tags */}
-          <motion.div {...fadeUp(0.75)}>
-            <TechTags />
           </motion.div>
 
           {/* Secondary links */}
@@ -211,6 +138,7 @@ const Home = () => {
                 window.open(
                   'https://calendly.com/milton-antony-ngala',
                   '_blank',
+                  'noopener,noreferrer',
                 )
               }
               className="inline-flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"

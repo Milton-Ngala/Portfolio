@@ -23,7 +23,7 @@ const FloatingActionButton = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const openWhatsApp = () =>
-    window.open('https://wa.me/254741760092', '_blank');
+    window.open('https://wa.me/254741760092', '_blank', 'noopener,noreferrer');
 
   const handleClick = () => (scrolled ? scrollToTop() : openWhatsApp());
 

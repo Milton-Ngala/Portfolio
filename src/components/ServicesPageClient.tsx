@@ -57,6 +57,27 @@ const serviceDetails = [
   },
 ];
 
+const engagementTracks = [
+  {
+    label: 'Build',
+    title: 'Launch a product',
+    description: 'From first prototype to production-ready full-stack application.',
+    services: 'Web development, APIs, e-commerce',
+  },
+  {
+    label: 'Modernise',
+    title: 'Improve an existing system',
+    description: 'Make legacy platforms easier to change, scale, and operate.',
+    services: 'Architecture, backend, integrations',
+  },
+  {
+    label: 'Scale',
+    title: 'Strengthen delivery',
+    description: 'Build the cloud, deployment, and engineering foundations for growth.',
+    services: 'Cloud, CI/CD, support, consultation',
+  },
+] as const;
+
 const ServiceCard = ({ service, index }: { service: typeof serviceDetails[0]; index: number }) => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
@@ -117,6 +138,26 @@ const ServicesPageClient = () => {
           </p>
         </motion.div>
 
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+          {engagementTracks.map((track) => (
+            <article key={track.label} className="border-l-2 border-primary-500 bg-white dark:bg-gray-900 px-5 py-5">
+              <p className="text-xs font-mono font-semibold uppercase tracking-wider text-primary-600 dark:text-primary-400 mb-2">
+                {track.label}
+              </p>
+              <h2 className="text-lg font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">
+                {track.title}
+              </h2>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
+                {track.description}
+              </p>
+              <p className="text-xs text-gray-500 dark:text-gray-500">{track.services}</p>
+            </article>
+          ))}
+        </div>
+
+        <p className="text-xs font-mono uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-5">
+          Detailed capabilities
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {serviceDetails.map((service, i) => (
             <ServiceCard key={service.name} service={service} index={i} />
@@ -140,7 +181,7 @@ const ServicesPageClient = () => {
               <ArrowRight size={16} aria-hidden="true" />
             </Link>
             <motion.button
-              onClick={() => window.open('https://calendly.com/milton-antony-ngala', '_blank')}
+              onClick={() => window.open('https://calendly.com/milton-antony-ngala', '_blank', 'noopener,noreferrer')}
               className="btn-ghost"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
