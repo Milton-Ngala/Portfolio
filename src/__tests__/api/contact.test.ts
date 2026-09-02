@@ -2,7 +2,6 @@
  * @jest-environment node
  */
 import { POST } from '../../app/api/contact/route';
-import { NextResponse } from 'next/server';
 import { HTTP_STATUS } from '../../constants/httpStatus';
 
 // Mock Resend
@@ -31,7 +30,8 @@ describe('Contact API', () => {
     const validBody = {
         name: 'John Doe',
         email: 'john@example.com',
-        message: 'Hello',
+        phone: '+254 741 760 092',
+        message: 'I would like to discuss a new web development project.',
         projectType: 'Web Dev',
     };
 
@@ -65,5 +65,30 @@ describe('Contact API', () => {
         expect(res.status).toBe(HTTP_STATUS.OK);
         const data = await res.json();
         expect(data.success).toBe(true);
+    });
+
+    it('should reject malformed JSON', async () => {
+        const req = new Request('http://localhost:3000/api/contact', {
+            method: 'POST',
+            headers: { 'Origin': 'http://localhost:3000', 'Content-Type': 'application/json' },
+            body: '{',
+        });
+
+        const res = await POST(req);
+        expect(res.status).toBe(HTTP_STATUS.BAD_REQUEST);
+    });
+
+    it('should accept unsafe text without sending raw HTML', async () => {
+        const req = new Request('http://localhost:3000/api/contact', {
+            method: 'POST',
+            headers: { 'Origin': 'http://localhost:3000', 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                ...validBody,
+                name: '<img src=x onerror=alert(1)>',
+            }),
+        });
+
+        const res = await POST(req);
+        expect(res.status).toBe(HTTP_STATUS.OK);
     });
 });

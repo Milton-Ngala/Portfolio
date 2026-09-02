@@ -105,7 +105,7 @@ const Contact = () => {
       title: 'Schedule a Call',
       description: '30-minute strategy or discovery session',
       cta: 'Book time',
-      action: () => window.open('https://calendly.com/milton-antony-ngala', '_blank'),
+      action: () => window.open('https://calendly.com/milton-antony-ngala', '_blank', 'noopener,noreferrer'),
       primary: true,
     },
     {
@@ -113,7 +113,7 @@ const Contact = () => {
       title: 'WhatsApp',
       description: 'Fast questions & clarifications',
       cta: 'Chat',
-      action: () => window.open('https://wa.me/254741760092', '_blank'),
+      action: () => window.open('https://wa.me/254741760092', '_blank', 'noopener,noreferrer'),
       primary: false,
     },
     {
